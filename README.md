@@ -1,1 +1,1 @@
-# PTEC_Hackathon
+# MITTBeats
