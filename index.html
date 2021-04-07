@@ -1,166 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <script src="app.js" defer></script>
-  <title>MITTBeats</title>
-</head>
-<header>
-  <div class="nav-wrapper">
-    <div class="nav">
-      <ul>
-        <li><span class="material-icons-outlined">search</span><input type="search" id="search-bar"
-            placeholder="Search"></li>
-        <li><a href="#">Music</a></li>
-        <li><a href="#">Library</a></li>
-        <li><a href="#">Genres</a></li>
-        <li><a href="#">Categories</a></li>
-      </ul>
-    </div>
-  </div>
-</header>
-
-<body>
-  <aside>
-    <img src="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
-      alt="Profile Photo" />
-    <h3>Jane Doe</h3>
-    <p>janedoe@gmail.com</p>
-    <ul>
-      <li><a href="#">Radio</a></li>
-      <li><a href="#">My Music</a></li>
-      <li><a href="#">Video</a></li>
-      <li><a href="#">Podcast</a></li>
-      <li><a href="#">Artists</a></li>
-    </ul>
-
-    <ul>
-      <li><a href="#"><span class="material-icons-outlined">logout</span>Logout</a></li>
-    </ul>
-  </aside>
-  <div>
-    <h2>Featured Artists</h2>
-
-    <span class="material-icons-outlined">arrow_back_ios</span>
-    <span class="material-icons-outlined">arrow_forward_ios</span>
-
-    <div class="artists">
-      <div class="artist">
-        <img />
-        <h5>Artist Name</h4>
-          <p> number of followers</p>
-      </div>
-      <div class="artist">
-        <img />
-        <h5>Artist Name</h4>
-          <p> number of followers</p>
-      </div>
-      <div class="artist">
-        <img />
-        <h5>Artist Name</h4>
-          <p> number of followers</p>
-      </div>
-      <div class="artist">
-        <img />
-        <h5>Artist Name</h4>
-          <p> number of followers</p>
-      </div>
-      <div class="artist">
-        <img />
-        <h5>Artist Name</h4>
-          <p> number of followers</p>
-      </div>
-      <div class="artist">
-        <img />
-        <h5>Artist Name</h4>
-          <p> number of followers</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <script src="app.js" defer></script>
+    <title>MITTBeats</title>
+  </head>
+  <header>
+    <div class="nav-wrapper">
+      <div class="nav">
+        <ul>
+          <li>
+            <span class="material-icons-outlined">search</span>
+            <form>
+              <input type="search" id="search-bar" placeholder="Search" />
+            </form>
+          </li>
+          <li><a href="#">Music</a></li>
+          <li><a href="#">Library</a></li>
+          <li><a href="#">Genres</a></li>
+          <li><a href="#">Categories</a></li>
+        </ul>
       </div>
     </div>
-  </div>
-  <div>
-    <h2>New Releases</h2>
-    <div class="songs">
-      <div class="song">
-        <img />
-        <h4>Song Name</h4>
-        <p class="artist-name">Artist Name</p>
-        <p class="song-duration">Song Duration</p>
-        <span class="material-icons-outlined">pause_circle</span>
-        <span class="material-icons-outlined">favorite_border</span>
-        <!-- when clicked, it becomes "<span class="material-icons-outlined">
-          favorite
-          </span>" and the song is added to the playlist-->
-      </div>
-      <div class="song">
-        <img />
-        <h4>Song Name</h4>
-        <p class="artist-name">Artist Name</p>
-        <p class="song-duration">Song Duration</p>
-        <span class="material-icons-outlined">pause_circle</span>
-        <span class="material-icons-outlined">favorite_border</span>
-        <!-- when clicked, it becomes "<span class="material-icons-outlined">
-          favorite
-          </span>" and the song is added to the playlist-->
-      </div>
-      <div class="song">
-        <img />
-        <h4>Song Name</h4>
-        <p class="artist-name">Artist Name</p>
-        <p class="song-duration">Song Duration</p>
-        <span class="material-icons-outlined">pause_circle</span>
-        <span class="material-icons-outlined">favorite_border</span>
-        <!-- when clicked, it becomes "<span class="material-icons-outlined">
-          favorite
-          </span>" and the song is added to the playlist-->
-      </div>
-      <div class="song">
-        <img />
-        <h4>Song Name</h4>
-        <p class="artist-name">Artist Name</p>
-        <p class="song-duration">Song Duration</p>
-        <span class="material-icons-outlined">pause_circle</span>
-        <span class="material-icons-outlined">favorite_border</span>
-        <!-- when clicked, it becomes "<span class="material-icons-outlined">
-          favorite
-          </span>" and the song is added to the playlist-->
-      </div>
-    </div>
-  </div>
-  <div>
-    <h2>Recently Played</h2>
-    <div class="recently-played-songs">
-      <div class="recently-played-song">
-        <span class="material-icons-outlined">play_circle</span>
-        <h5>name of recently played song</h5>
-        <p>Song duration</p>
-      </div>
-      <div class="recently-played-song">
-        <span class="material-icons-outlined">play_circle</span>
-        <h5>name of recently played song</h5>
-        <p>Song duration</p>
-      </div><div class="recently-played-song">
-        <span class="material-icons-outlined">play_circle</span>
-        <h5>name of recently played song</h5>
-        <p>Song duration</p>
-      </div><div class="recently-played-song">
-        <span class="material-icons-outlined">play_circle</span>
-        <h5>name of recently played song</h5>
-        <p>Song duration</p>
-      </div><div class="recently-played-song">
-        <span class="material-icons-outlined">play_circle</span>
-        <h5>name of recently played song</h5>
-        <p>Song duration</p>
-      </div><div class="recently-played-song">
-        <span class="material-icons-outlined">play_circle</span>
-        <h5>name of recently played song</h5>
-        <p>Song duration</p>
-      </div>
-    </div>
-  </div>
-</body>
+  </header>
+
+  <body>
+    <div class="lyrics"></div>
+  </body>
 </html>
