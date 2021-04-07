@@ -1,11 +1,26 @@
 //TEMPORARY 
 let lyrics = document.querySelector('.lyrics')
+let input = document.querySelector('form input')
+let form = document.querySelector('form')
 let artistName = [];
 let songName = [];
 let images = [];
 let newArray;
+let value;
+console.log(input)
+
+form.addEventListener('submit', async function(e) {
+  e.preventDefault();
+  songName = [];
+  artistName = [];
+  images = [];
+  value = input.value;
+  await getArtists();
+
+});
+
 async function getArtists() {
-  let response = await fetch("https://genius.p.rapidapi.com/search?q=katy%20perry", {
+  let response = await fetch(`https://genius.p.rapidapi.com/search?q=${value}`, {
     "method": "GET",
     "headers": {
       "x-rapidapi-key": "4616b7ae9cmshb6e506f5ffff27ep1fe324jsn702dc6119fbe",
@@ -20,12 +35,9 @@ async function getArtists() {
     images.push(song.result.header_image_thumbnail_url)
   });
   displayLyrics(songName, artistName, images)
-  //formatArtist()
 }
 
-getArtists();
-
-async function displaySongs(song, artist, images) {
+async function displayLyrics(song, artist, images) {
   for(let x = 0; x < song.length; x++) {
     lyrics.innerHTML += `
     <ul>
@@ -40,6 +52,7 @@ async function displaySongs(song, artist, images) {
     `
   }
 }
+
 //This is for the top 10's list
 let num = 0;
 async function getTopSongs(){
