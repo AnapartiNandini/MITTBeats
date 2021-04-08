@@ -1,8 +1,8 @@
 //TEMPORARY 
-const lyrics = document.querySelector('.lyrics')
+const divCont = document.querySelector('.item')
 const form = document.querySelector('form');
 const searchBar = document.querySelector('#search-bar');
-const baseUrl = { shaz: "https://shazam.p.rapidapi.com/", genius: "https://genius.p.rapidapi.com/", lyrics: "https://api.lyrics.ovh/v1/", download:"", city:"https://api.bigdatacloud.net/data/reverse-geocode-client?localityLanguage=en"};
+const baseUrl = { shaz: "https://shazam.p.rapidapi.com/charts/", genius: "https://genius.p.rapidapi.com/", lyrics: "https://api.lyrics.ovh/v1/", download:"", city:"https://api.bigdatacloud.net/data/reverse-geocode-client?localityLanguage=en"};
 const iframe = document.querySelector("iframe");
 const songs = document.querySelector('.top-songs');
 
@@ -34,24 +34,29 @@ const urlHeaders = {
   shazam2:{
     "method": "GET",
     "headers": {
-     "x-rapidapi-key": "2247980046msh68a22faa7c63535p109a44jsn81484c7d80bf",
-     "x-rapidapi-host": "shazam.p.rapidapi.com"
+      "x-rapidapi-key": "2247980046msh68a22faa7c63535p109a44jsn81484c7d80bf",
+      "x-rapidapi-host": "shazam.p.rapidapi.com"
     }
   }
 }
 
-async function getArtists(str) {
+async function getSongsGenius(str){
   str = str.split(" ").join("%20");
 
   let data = await fetch(`${baseUrl.genius}search?q=${str}`, urlHeaders.genius2);
   data = await data.json();
-  lyrics.innerHTML = "";
+  return data;
+}
+
+async function getSongs(str) {
+  let data = getSongsGenius(str);
+  divCont.innerHTML = "";
   data.response.hits.forEach(song => {
     let songName = song.result.title_with_featured;
     let artistName = song.result.primary_artist.name;
     let images = song.result.header_image_thumbnail_url;
     let id = song.result.id;
-      lyrics.innerHTML += `
+    divCont.innerHTML += `
       <ul data-id="${id}">
         <img src = "${images}"/>
         <li class="song-name">
@@ -88,8 +93,8 @@ form.onsubmit = (e) => {
 }
 
 
-//change lyrics const on top to the element that will hold all the songs searched DO NOT DELETE
-/* lyrics.onclick = (e) => {
+//change divCont const on top to the element that will hold all the songs searched DO NOT DELETE
+/* divCont.onclick = (e) => {
   console.log(e.target);
   let close = e.target.closest("ul");
   console.log(close);
@@ -105,15 +110,47 @@ form.onsubmit = (e) => {
 } */
 
 //This is for the top 10's list
-async function getTopSongs(){
-  let data = await fetch(`${baseUrl.shaz}charts/list`, urlHeaders.shazam1);
+async function getCityId(coun){
+  let data = await fetch(`${baseUrl.shaz}list`, urlHeaders.shazam1);
   data = await data.json();
-  console.log(data) 
-  
-  
- 
+
+  let dataMusic;
+  console.log(dataMusic);
+  data.countries.forEach((e) => {
+    if (e.name.toLowerCase() === coun.countryName.toLowerCase()) {
+      dataMusic = e.cities.find((city) => {
+        if (city.name.toLowerCase() === coun.city.toLowerCase()) {
+          return true;
+        }
+      });
+
+      if (dataMusic === undefined) {
+        dataMusic = e.cities[0];
+      }
+    }
+  });
+  getTopSongs(dataMusic);
 }
-getTopSongs();
+
+async function getTopSongs(id){
+  console.log(id);
+  let data;
+  if (id === undefined){
+   data = await fetch(`${baseUrl.shaz}track?locale=en-US&pageSize=10&startFrom=1`, urlHeaders.shazam2);
+  } else {
+    data = await fetch(`${baseUrl.shaz}track?locale=en-US&listId=${id.listid}&pageSize=10`, urlHeaders.shazam2);
+  }
+  data = await data.json();
+  console.log(data);
+  data = data.tracks.map(async (e) =>{
+    return await getSongsGenius(e.title);
+  })
+  data = await Promise.all(data);
+  data = data.map((e) => e.response.hits[0].result);
+  console.log(data);
+
+  
+}
 
 async function cordToCity(loco) {
   if ("code" in loco) {
@@ -122,8 +159,8 @@ async function cordToCity(loco) {
   }
 
   let data = await fetch(`${baseUrl.city}&latitude=${loco.latitude}&longitude=${loco.longitude}`)
-  data = data.json();
-  console.log(data);
+  data = await data.json();
+  getCityId(data);
 }
 
 navigator.geolocation.getCurrentPosition(cordToCity, cordToCity
