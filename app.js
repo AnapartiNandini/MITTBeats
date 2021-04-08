@@ -6,9 +6,6 @@ const baseUrl = { shaz: "https://shazam.p.rapidapi.com/", genius: "https://geniu
 const iframe = document.querySelector("iframe");
 const songs = document.querySelector('.top-songs');
 
-
-
-
 const urlHeaders = {
   genius1: {
 	"method": "GET",
@@ -108,10 +105,7 @@ form.onsubmit = (e) => {
 async function getTopSongs(){
   let data = await fetch(`${baseUrl.shaz}charts/list`, urlHeaders.shazam1);
   data = await data.json();
-  console.log(data) 
-  
-  
- 
+  console.log(data);
 }
 getTopSongs();
 

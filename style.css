@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 .material-icons-outlined {
   font-family: 'Material Icons';
   font-weight: normal;
@@ -10,4 +13,84 @@
   word-wrap: normal;
   white-space: nowrap;
   direction: ltr;
+  position: relative;
+  top: 5px;
+  right: 5px;
 }
+
+.body-content {
+  margin-left: 300px;
+}
+
+aside {
+  display: block;
+  margin: 0;
+  padding: 0;
+  width: 300px; 
+  background-color: white;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+aside img {
+  width: 150px;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+aside img, 
+aside ul,  
+aside a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+
+aside li {
+  display: block;
+  color: black;
+  padding: 2px 16px 2px 16px;
+  text-decoration: none;
+}
+
+aside a {
+ padding-bottom: 20px;
+ font-size: 17px;
+}
+
+aside .logout {
+  margin-top: 20%;
+  vertical-align: text-bottom;
+}
+
+aside h3,
+aside p {
+  display: block;
+  color: black;
+  text-align: center;
+  margin: 0;
+}
+
+aside h3 {
+  font-size: 24px;
+}
+
+aside p {
+  color: grey;
+  font-size: 10px; 
+}
+ 
+aside a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+aside a:hover:not(.active) {
+  background-color:rgb(255, 156, 126);
+  color: white;
+  border-radius: 10px 10px 10px 10px;
+} 
