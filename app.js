@@ -2,15 +2,11 @@
 const lyrics = document.querySelector('.lyrics')
 const form = document.querySelector('form');
 const searchBar = document.querySelector('#search-bar');
-const baseUrl = { shaz: "https://shazam.p.rapidapi.com/", genius: "https://genius.p.rapidapi.com/", lyrics: "https://api.lyrics.ovh/v1/", download:""};
+const baseUrl = { shaz: "https://shazam.p.rapidapi.com/", genius: "https://genius.p.rapidapi.com/", lyrics: "https://api.lyrics.ovh/v1/", download:"", city:"https://api.bigdatacloud.net/data/reverse-geocode-client?localityLanguage=en"};
 const iframe = document.querySelector("iframe");
 const songs = document.querySelector('.top-songs');
 
-navigator.geolocation.getCurrentPosition(function(ite){
 
-}, function(ite){
-
-}, {enableHighAccuracy:true})
 
 
 const urlHeaders = {
@@ -91,7 +87,9 @@ form.onsubmit = (e) => {
   e.preventDefault();
 }
 
-lyrics.onclick = (e) => {
+
+//change lyrics const on top to the element that will hold all the songs searched DO NOT DELETE
+/* lyrics.onclick = (e) => {
   console.log(e.target);
   let close = e.target.closest("ul");
   console.log(close);
@@ -104,7 +102,7 @@ lyrics.onclick = (e) => {
   } else if (close != undefined ){
 
   }
-}
+} */
 
 //This is for the top 10's list
 async function getTopSongs(){
@@ -116,6 +114,20 @@ async function getTopSongs(){
  
 }
 getTopSongs();
+
+async function cordToCity(loco) {
+  if ("code" in loco) {
+    loco.latitude = 43.6529;
+    loco.longitude = -79.3849;
+  }
+
+  let data = await fetch(`${baseUrl.city}&latitude=${loco.latitude}&longitude=${loco.longitude}`)
+  data = data.json();
+  console.log(data);
+}
+
+navigator.geolocation.getCurrentPosition(cordToCity, cordToCity
+  , {enableHighAccuracy:true});
 //THIS IS THE HTML CODE
 // <!DOCTYPE html>
 // <html lang="en">
