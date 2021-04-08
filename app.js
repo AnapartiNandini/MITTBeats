@@ -2,15 +2,15 @@
 const lyrics = document.querySelector('.lyrics')
 const form = document.querySelector('form');
 const searchBar = document.querySelector('#search-bar');
-const baseUrl = { shaz: "https://shazam.p.rapidapi.com/", genius: "https://genius.p.rapidapi.com/", lyrics: "https://api.lyrics.ovh/v1/", download:""};
+const baseUrl = { shaz: "https://shazam.p.rapidapi.com/", genius: "https://genius.p.rapidapi.com/", lyrics: "https://api.lyrics.ovh/v1/", download:"", city:"https://api.bigdatacloud.net/data/reverse-geocode-client?localityLanguage=en"};
 const iframe = document.querySelector("iframe");
 const songs = document.querySelector('.top-songs');
 
-// navigator.geolocation.getCurrentPosition(function(ite){
+navigator.geolocation.getCurrentPosition(function(ite){
 
-// }, function(ite){
+}, function(ite){
 
-// }, {enableHighAccuracy:true})
+}, {enableHighAccuracy:true})
 
 
 const urlHeaders = {
@@ -84,27 +84,29 @@ searchBar.onkeyup  = (e) => {
   }
 }
 
-// form.onsubmit = (e) => {
-//   if(searchBar.value.length > 0){
-//     getArtists(searchBar.value);
-//   }
-//   e.preventDefault();
-// }
+form.onsubmit = (e) => {
+  if(searchBar.value.length > 0){
+    getArtists(searchBar.value);
+  }
+  e.preventDefault();
+}
 
-// lyrics.onclick = (e) => {
-//   console.log(e.target);
-//   let close = e.target.closest("ul");
-//   console.log(close);
-//   if (close != undefined && e.target.classList.contains("fa-play")) {
-//     playMusicSample(close.dataset.id);
-//     e.target.classlist.toggle("fa-play", "fa-pause");
 
-//   } else if (close != undefined && e.target.classList.contains("fa-pause")){
-//     e.target.classlist.toggle("fa-play", "fa-pause");
-//   } else if (close != undefined ){
+//change lyrics const on top to the element that will hold all the songs searched DO NOT DELETE
+lyrics.onclick = (e) => {
+  console.log(e.target);
+  let close = e.target.closest("ul");
+  console.log(close);
+  if (close != undefined && e.target.classList.contains("fa-play")) {
+    playMusicSample(close.dataset.id);
+    e.target.classlist.toggle("fa-play", "fa-pause");
 
-//   }
-// }
+  } else if (close != undefined && e.target.classList.contains("fa-pause")){
+  e.target.classlist.toggle("fa-play", "fa-pause");
+  } else if (close != undefined ){
+
+  }
+} 
 
 //This is for the top 10's list
 let num = 0;
@@ -132,4 +134,19 @@ async function getTopSongs(){
   });
 }
 getTopSongs();
+
+async function cordToCity(loco) {
+  if ("code" in loco) {
+    loco.latitude = 43.6529;
+    loco.longitude = -79.3849;
+  }
+
+  let data = await fetch(`${baseUrl.city}&latitude=${loco.latitude}&longitude=${loco.longitude}`)
+  data = data.json();
+  console.log(data);
+}
+
+navigator.geolocation.getCurrentPosition(cordToCity, cordToCity
+  
+, {enableHighAccuracy:true});
 
