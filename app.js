@@ -5,7 +5,7 @@ const searchBar = document.querySelector('#search-bar');
 const baseUrl = { shaz: "https://shazam.p.rapidapi.com/charts/", genius: "https://genius.p.rapidapi.com/", lyrics: "https://api.lyrics.ovh/v1/", download:"", city:"https://api.bigdatacloud.net/data/reverse-geocode-client?localityLanguage=en"};
 const iframe = document.querySelector("iframe");
 const songs = document.querySelector('.top-songs');
-
+const params = new URLSearchParams(window.location.search);
 const urlHeaders = {
   genius1: {
 	"method": "GET",
@@ -38,13 +38,28 @@ const urlHeaders = {
 }
 
 // type 1 === top 10 that need to be disoplayed
+//type 2 === lyrics and download links for page 
 function display(data,type){
   if (type === 1) {
     for ( const obj of data){
       //insert html
     }
+  } else if (type === 2) {
+    let item = getInfo(data);
   }
 }
+
+async function getInfo(str){
+  let data = await fetch(`${baseUrl.genius}songs/${str}`, urlHeaders.genius2);
+  data = await data.json();
+  data = data.response.song;
+  data = {media:data.media,id:data.id, appleMusic: data.apple_music_player_url, featured: data.featured_artists, primary:data.primary_artist, fullTitle: data.full_title,title: data.title, lyricsByGenius: data.url}
+  data.lyrics = await fetch(`${baseUrl.lyrics}${data.primary.name}/${data.title}`);
+  data.lyrics = await data.lyrics.json();
+  data.lyrics = data.lyrics.lyrics;
+  return data;
+}
+
 
 async function getSongsGenius(str){
   str = str.split(" ").join("%20");
@@ -64,9 +79,13 @@ async function getSongs(str) {
     let id = song.result.id;
     divCont.innerHTML += `
       <ul data-id="${id}">
+      
         <img src = "${images}"/>
         <li class="song-name">
         ${songName}
+        </li>
+        <li class="song-name">
+          <a href="song.html?id=${id}">song</a>
         </li>
         <li class="artist-name">
         ${artistName}
@@ -85,34 +104,7 @@ async function playMusicSample(id){
   iframe.src = `${data.response.song.apple_music_player_url}`;
 }
 
-searchBar.onkeyup  = (e) => {
-  if(searchBar.value.length >= 3){
-    getSongs(searchBar.value);
-  }
-}
 
-form.onsubmit = (e) => {
-  if(searchBar.value.length > 0){
-    getSongs(searchBar.value);
-  }
-  e.preventDefault();
-}
-
-//change divCont const on top to the element that will hold all the songs searched DO NOT DELETE
- divCont.onclick = (e) => {
-  console.log(e.target);
-  let close = e.target.closest("ul");
-  console.log(close);
-  if (close != undefined && e.target.classList.contains("fa-play")) {
-    playMusicSample(close.dataset.id);
-    e.target.classlist.toggle("fa-play", "fa-pause");
-
-  } else if (close != undefined && e.target.classList.contains("fa-pause")){
-    e.target.classlist.toggle("fa-play", "fa-pause");
-  } else if (close != undefined ){
-
-  }
-} 
 
 //This is for the top 10's list
 async function getCityId(coun){
@@ -165,8 +157,40 @@ async function cordToCity(loco) {
   getCityId(data);
 }
 
-//navigator.geolocation.getCurrentPosition(cordToCity, cordToCity
-//  , {enableHighAccuracy:true});
+if (params.has("id")){
+  display(params.get("id"),2);
+} else {
+  searchBar.onkeyup  = (e) => {
+    if(searchBar.value.length >= 3){
+      getSongs(searchBar.value);
+    }
+  }
+  
+  form.onsubmit = (e) => {
+    if(searchBar.value.length > 0){
+      getSongs(searchBar.value);
+    }
+    e.preventDefault();
+  }
+  
+  //change divCont const on top to the element that will hold all the songs searched DO NOT DELETE
+   divCont.onclick = (e) => {
+    console.log(e.target);
+    let close = e.target.closest("ul");
+    console.log(close);
+    if (close != undefined && e.target.classList.contains("fa-play")) {
+      playMusicSample(close.dataset.id);
+      e.target.classlist.toggle("fa-play", "fa-pause");
+  
+    } else if (close != undefined && e.target.classList.contains("fa-pause")){
+      e.target.classlist.toggle("fa-play", "fa-pause");
+    } else if (close != undefined ){
+  
+    }
+  } 
+navigator.geolocation.getCurrentPosition(cordToCity, cordToCity
+  , {enableHighAccuracy:true});
+}
 //uncoment top 2 lines to activate top 10
 
 //THIS IS THE HTML CODE
