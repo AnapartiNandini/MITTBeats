@@ -55,7 +55,7 @@ async function getSongsGenius(str){
 }
 
 async function getSongs(str) {
-  let data = getSongsGenius(str);
+  let data = await getSongsGenius(str);
   divCont.innerHTML = "";
   data.response.hits.forEach(song => {
     let songName = song.result.title_with_featured;
@@ -87,19 +87,19 @@ async function playMusicSample(id){
 
 searchBar.onkeyup  = (e) => {
   if(searchBar.value.length >= 3){
-    getArtists(searchBar.value);
+    getSongs(searchBar.value);
   }
 }
 
 form.onsubmit = (e) => {
   if(searchBar.value.length > 0){
-    getArtists(searchBar.value);
+    getSongs(searchBar.value);
   }
   e.preventDefault();
 }
 
 //change divCont const on top to the element that will hold all the songs searched DO NOT DELETE
-/* divCont.onclick = (e) => {
+ divCont.onclick = (e) => {
   console.log(e.target);
   let close = e.target.closest("ul");
   console.log(close);
@@ -112,7 +112,7 @@ form.onsubmit = (e) => {
   } else if (close != undefined ){
 
   }
-} */
+} 
 
 //This is for the top 10's list
 async function getCityId(coun){
@@ -165,8 +165,10 @@ async function cordToCity(loco) {
   getCityId(data);
 }
 
-navigator.geolocation.getCurrentPosition(cordToCity, cordToCity
-  , {enableHighAccuracy:true});
+//navigator.geolocation.getCurrentPosition(cordToCity, cordToCity
+//  , {enableHighAccuracy:true});
+//uncoment top 2 lines to activate top 10
+
 //THIS IS THE HTML CODE
 // <!DOCTYPE html>
 // <html lang="en">
