@@ -28,7 +28,7 @@ body {
 }
 
 main {
-  margin-left: 150px;
+  margin-left: 300px;
 }
 
 .nav li {
@@ -86,9 +86,8 @@ main {
 }
 
 .nav-wrapper {
-  width: 89%;
+  width: 75%;
   background-color: #383737;
-  margin-left: 150px;
   border-radius: 20px;
 }
 .top-ten {
@@ -99,6 +98,11 @@ main {
   display: inline-block;
 }
 
+header {
+  margin-left: 300px;
+  width: 100%;
+  padding: 0;
+}
 
 .body-content {
   margin-left: 300px;
