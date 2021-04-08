@@ -6,9 +6,6 @@ const baseUrl = { shaz: "https://shazam.p.rapidapi.com/charts/", genius: "https:
 const iframe = document.querySelector("iframe");
 const songs = document.querySelector('.top-songs');
 
-
-
-
 const urlHeaders = {
   genius1: {
 	"method": "GET",
@@ -36,6 +33,15 @@ const urlHeaders = {
     "headers": {
       "x-rapidapi-key": "2247980046msh68a22faa7c63535p109a44jsn81484c7d80bf",
       "x-rapidapi-host": "shazam.p.rapidapi.com"
+    }
+  }
+}
+
+// type 1 === top 10 that need to be disoplayed
+function display(data,type){
+  if (type === 1) {
+    for ( const obj of data){
+      //insert html
     }
   }
 }
@@ -92,7 +98,6 @@ form.onsubmit = (e) => {
   e.preventDefault();
 }
 
-
 //change divCont const on top to the element that will hold all the songs searched DO NOT DELETE
 /* divCont.onclick = (e) => {
   console.log(e.target);
@@ -141,15 +146,12 @@ async function getTopSongs(id){
     data = await fetch(`${baseUrl.shaz}track?locale=en-US&listId=${id.listid}&pageSize=10`, urlHeaders.shazam2);
   }
   data = await data.json();
-  console.log(data);
   data = data.tracks.map(async (e) =>{
     return await getSongsGenius(e.title);
   })
   data = await Promise.all(data);
   data = data.map((e) => e.response.hits[0].result);
-  console.log(data);
-
-  
+  display(data);
 }
 
 async function cordToCity(loco) {
