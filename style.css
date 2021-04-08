@@ -1,11 +1,19 @@
+body {
+  margin: 0;
+  font-family: Verdana,Tahoma, sans-serif;
+  color: white;
+  background: #2b2b2b;
+}
+
 * {
   box-sizing: border-box;
 }
+
 .material-icons-outlined {
   font-family: 'Material Icons';
   font-weight: normal;
   font-style: normal;
-  font-size: 24px;  /* Preferred icon size */
+  font-size: 30px;  /* Preferred icon size */
   display: inline-block;
   line-height: 1;
   text-transform: none;
@@ -13,10 +21,84 @@
   word-wrap: normal;
   white-space: nowrap;
   direction: ltr;
+  margin-right: 3px;
   position: relative;
   top: 5px;
   right: 5px;
 }
+
+main {
+  margin-left: 150px;
+}
+
+.nav li {
+  display: inline-block;
+  display: flex;
+  align-items: center;
+  color: white
+}
+
+.nav a {
+  text-decoration: none;
+  color:white;
+  padding: 2px;
+}
+
+.nav a:hover {
+  border-bottom: 1px solid #f53864 ;
+}
+
+.nav ul {
+  text-align: center;
+  margin:0;
+  padding:0;
+  height: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.search {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  margin-left: 50px;
+}
+
+.search input {
+  border-radius: 10px;
+  border: 0 solid;
+  padding: 10px;
+}
+
+.options {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: 300px;
+  margin-right: 50px;
+}
+
+.options li {
+  padding: 5px;
+  margin: auto;
+}
+
+.nav-wrapper {
+  width: 89%;
+  background-color: #383737;
+  margin-left: 150px;
+  border-radius: 20px;
+}
+.top-ten {
+  display: inline-block;
+}
+
+.top-songs {
+  display: inline-block;
+}
+
 
 .body-content {
   margin-left: 300px;
