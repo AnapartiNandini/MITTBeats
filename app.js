@@ -1,5 +1,6 @@
 //TEMPORARY 
 const divCont = document.querySelector('.body-content');
+const featured = document.querySelector('.artists');
 const form = document.querySelector('form');
 const songDiv = document.querySelector('.top-songs');
 const searchBar = document.querySelector('#search-bar');
@@ -61,7 +62,14 @@ function display(data,type){
     console.log(item);
   } else if (type === 3) {
     console.log(data);
-    //insertHtml
+    data.forEach(element => {
+      featured.innerHTML += `
+      <div class="featured-song">
+       <img src="${element.image_url}"/>
+       <h3>${element.name}</h3>
+      </div>
+      `
+    });
   }
 }
 

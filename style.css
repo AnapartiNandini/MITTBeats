@@ -291,3 +291,12 @@ aside a:hover:not(.active) {
   text-align: right;
   font-size: 36px;
 }
+
+.featured-song img {
+  width: 150px;
+  border-radius: 50%;
+}
+
+.featured-song h3 {
+  display: inline-block;
+}
