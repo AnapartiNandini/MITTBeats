@@ -44,7 +44,6 @@ const urlHeaders = {
 //type 3 === artists
 function display(data,type){
   if (type === 1) {
-<<<<<<< HEAD
     data.forEach((song, i) => {
       songDiv.innerHTML += `
         <h1 class="number">${i + 1}</h1>
@@ -63,24 +62,6 @@ function display(data,type){
     for ( const obj of data){
       //insert html
     }
-||||||| 9ff5599
-    for ( const obj of data){
-      //insert html
-    }
-=======
-    data.forEach((song,i) => {
-      songDiv.innerHTML += `
-      <h1 class="number">${i + 1}</h1>
-      <div class="song" data-id="${song.id}">
-        <img src="${song.song_art_image_url}" width="200" height="200"/>
-        <div class="overlay">
-          <h3 class="title">${song.title}</h3>
-          <h3 class="artist-name">${song.primary_artist.name}</h3>
-        </div>
-      <div>
-      `
-    });
->>>>>>> 9a7511ba2a2020c034a1e3a51daefb53f3d78d27
   } else if (type === 2) {
     let item = getInfo(data);
     console.log(item);
@@ -203,16 +184,8 @@ async function cordToCity(loco) {
   getCityId(data);
 }
 
-<<<<<<< HEAD
-if (params.has("id")) {
-  display(params.get("id"), 2);
-||||||| 9ff5599
-if (params.has("id")){
-  display(params.get("id"),2);
-=======
  if (params.has("id")){
   display(params.get("id"),2);
->>>>>>> 9a7511ba2a2020c034a1e3a51daefb53f3d78d27
 } else {
   searchBar.onkeyup = (e) => {
     if (searchBar.value.length >= 3) {
