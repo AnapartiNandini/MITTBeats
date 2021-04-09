@@ -93,11 +93,12 @@ async function getSongs(str) {
     let images = song.result.header_image_thumbnail_url;
     let id = song.result.id;
     divCont.innerHTML += `
+    <a href="song.html?id=${id}">
       <ul class="artists-song" data-id="${id}">
-        <div class="left">
-          <a href="song.html?id=${id}"><img src = "${images}"/></a>
-        </div>
-        <div class="right">
+          <div class="left">
+          <img src = "${images}"/>
+          </div>
+          <div class="right">
           <li class="song-name">
           ${songName}
           </li>
@@ -106,6 +107,7 @@ async function getSongs(str) {
           </li>
         <div>
       </ul>
+      </a>
       `
   });
 }
