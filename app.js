@@ -26,17 +26,17 @@ const urlHeaders = {
   shazam1:{
     "method": "GET",
     "headers": {
-      "x-rapidapi-key": "4616b7ae9cmshb6e506f5ffff27ep1fe324jsn702dc6119fbe",
+      "x-rapidapi-key": "610ad29b0bmshfd6c939c7547495p1c3f93jsn2ca0556b4d1d",
       "x-rapidapi-host": "shazam.p.rapidapi.com"
     }
   },
   shazam2:{
     "method": "GET",
     "headers": {
-      "x-rapidapi-key": "2247980046msh68a22faa7c63535p109a44jsn81484c7d80bf",
-      "x-rapidapi-host": "shazam.p.rapidapi.com"
+        "x-rapidapi-key": "e747355dd1mshe2c4dcb5fe7cad9p12f3d4jsn327270b916ee",
+        "x-rapidapi-host": "shazam.p.rapidapi.com"
     }
-  }
+}
 }
 
 // type 1 === top 10 that need to be disoplayed
