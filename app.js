@@ -38,7 +38,7 @@ const urlHeaders = {
   }
 }
 
-// type 1 === top 10 that need to be disoplayed
+// type 1 === top 10 that need to be displayed
 //type 2 === lyrics and download links for page 
 function display(data,type){
   if (type === 1) {

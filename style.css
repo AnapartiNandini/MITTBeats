@@ -52,7 +52,10 @@ main {
   padding: 20px;
   pointer-events: none;
   opacity: 0;
+  width: 100%;
   transition: opacity .125s ease;
+  word-wrap: break-word;
+  white-space: normal;
 }
 
 .song:hover img{
