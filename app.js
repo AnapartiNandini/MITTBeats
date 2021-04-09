@@ -1,6 +1,7 @@
 //TEMPORARY 
-const divCont = document.querySelector('.item');
+const divCont = document.querySelector('.body-content');
 const form = document.querySelector('form');
+const songDiv = document.querySelector('.top-songs');
 const searchBar = document.querySelector('#search-bar');
 const button = document.querySelector('button');
 const baseUrl = { shaz: "https://shazam.p.rapidapi.com/charts/", genius: "https://genius.p.rapidapi.com/", lyrics: "https://api.lyrics.ovh/v1/", download:"", city:"https://api.bigdatacloud.net/data/reverse-geocode-client?localityLanguage=en"};
@@ -57,7 +58,9 @@ function display(data,type){
     });
   } else if (type === 2) {
     let item = getInfo(data);
+    console.log(item);
   } else if (type === 3) {
+    console.log(data);
     //insertHtml
   }
 }
@@ -142,6 +145,7 @@ async function getArtists(data) {
   data = data.map((e) => e.primary_artist);
   display(data, 3);
 }
+
 async function getTopSongs(id){
   console.log(id);
   let data;
@@ -156,7 +160,7 @@ async function getTopSongs(id){
   })
   data = await Promise.all(data);
   data = data.map((e) => e.response.hits[0].result);
-  display(data);
+  display(data,1);
   getArtists(data);
 }
 
@@ -171,7 +175,7 @@ async function cordToCity(loco) {
   getCityId(data);
 }
 
-/* if (params.has("id")){
+ if (params.has("id")){
   display(params.get("id"),2);
 } else {
   searchBar.onkeyup  = (e) => {
@@ -179,15 +183,14 @@ async function cordToCity(loco) {
       getSongs(searchBar.value);
     }
   }
-  
   form.onsubmit = (e) => {
     if(searchBar.value.length > 0){
       getSongs(searchBar.value);
     }
     e.preventDefault();
-  } */
+  } 
 
-/*   //change divCont const on top to the element that will hold all the songs searched DO NOT DELETE
+  //change divCont const on top to the element that will hold all the songs searched DO NOT DELETE
    divCont.onclick = (e) => {
     console.log(e.target);
     let close = e.target.closest("ul");
@@ -201,34 +204,8 @@ async function cordToCity(loco) {
     } else if (close != undefined ){
   
     }
-  }  */
+  } 
 navigator.geolocation.getCurrentPosition(cordToCity, cordToCity
   , {enableHighAccuracy:true});
-
-
-//uncoment top 2 lines to activate top 10
-
-//THIS IS THE HTML CODE
-// <!DOCTYPE html>
-// <html lang="en">
-// <head>
-//   <meta charset="UTF-8">
-//   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-//   <script src="app.js" defer></script>
-//   <title>Document</title>
-// </head>
-// <body>
-//   <h1>Top 10</h1>
-//   <div>
-//     <ul class="top-songs">
-
-//     </ul>
-//   </div>
-// </body>
-// </html>
-
-/* songs.innerHTML += `
-<h2>${num}.</h2>
-<img src="${song.images.coverarthq}" width="200" height="200"/>
-<h3>${song.title}</h3>
-<h3>${song.subtitle}</h3> */
+}
+  
