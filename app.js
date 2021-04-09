@@ -1,10 +1,10 @@
 //TEMPORARY 
-const divCont = document.querySelector('.item')
+const divCont = document.querySelector('.body-content')
 const form = document.querySelector('form');
 const songDiv = document.querySelector('.top-songs');
-const searchBar = document.querySelector('#search-bar');
-const baseUrl = { shaz: "https://shazam.p.rapidapi.com/charts/", genius: "https://genius.p.rapidapi.com/", lyrics: "https://api.lyrics.ovh/v1/", download: "", city: "https://api.bigdatacloud.net/data/reverse-geocode-client?localityLanguage=en" };
-const iframe = document.querySelector("iframe");
+const searchBar = document.querySelector('input');
+const baseUrl = { shaz: "https://shazam.p.rapidapi.com/charts/", genius: "https://genius.p.rapidapi.com/", lyrics: "https://api.lyrics.ovh/v1/", download:"", city:"https://api.bigdatacloud.net/data/reverse-geocode-client?localityLanguage=en"};
+const iframe = document.getElementsByTagName("iframe")[0];
 const songs = document.querySelector('.top-songs');
 const params = new URLSearchParams(window.location.search);
 const urlHeaders = {
@@ -38,9 +38,10 @@ const urlHeaders = {
   }
 }
 
-// type 1 === top 10 that need to be displayed
+// type 1 === top 10 that need to be disoplayed
 //type 2 === lyrics and download links for page 
-function display(data, type) {
+//type 3 === artists
+function display(data,type){
   if (type === 1) {
     data.forEach((song, i) => {
       songDiv.innerHTML += `
@@ -57,8 +58,13 @@ function display(data, type) {
         </div>
         `
     });
+    for ( const obj of data){
+      //insert html
+    }
   } else if (type === 2) {
     let item = getInfo(data);
+  } else if (type === 3) {
+    //insertHtml
   }
 }
 
@@ -76,7 +82,6 @@ async function getInfo(str) {
 
 async function getSongsGenius(str) {
   str = str.split(" ").join("%20");
-
   let data = await fetch(`${baseUrl.genius}search?q=${str}`, urlHeaders.genius2);
   data = await data.json();
   return data;
@@ -91,22 +96,21 @@ async function getSongs(str) {
     let images = song.result.header_image_thumbnail_url;
     let id = song.result.id;
     divCont.innerHTML += `
-      <ul data-id="${id}">
-      
-        <img src = "${images}"/>
-        <li class="song-name">
-        ${songName}
-        </li>
-        <li class="song-name">
-          <a href="song.html?id=${id}">song</a>
-        </li>
-        <li class="artist-name">
-        ${artistName}
-        </li>
-        <li class="song-name">
-        <i class="fas fa-play"></i>
-        </li>
+    <a href="song.html?id=${id}">
+      <ul class="artists-song" data-id="${id}">
+          <div class="left">
+          <img src = "${images}"/>
+          </div>
+          <div class="right">
+          <li class="song-name">
+          ${songName}
+          </li>
+          <li class="artist-name">
+            ${artistName}
+          </li>
+        <div>
       </ul>
+      </a>
       `
   });
 }
@@ -125,6 +129,7 @@ async function getCityId(coun) {
   data = await data.json();
 
   let dataMusic;
+  console.log(dataMusic);
   data.countries.forEach((e) => {
     if (e.name.toLowerCase() === coun.countryName.toLowerCase()) {
       dataMusic = e.cities.find((city) => {
@@ -141,7 +146,12 @@ async function getCityId(coun) {
   getTopSongs(dataMusic);
 }
 
-async function getTopSongs(id) {
+
+async function getArtists(data) {
+  data = data.map((e) => e.primary_artist);
+  display(data, 3);
+}
+async function getTopSongs(id){
   console.log(id);
   let data;
   if (id === undefined) {
@@ -155,7 +165,8 @@ async function getTopSongs(id) {
   })
   data = await Promise.all(data);
   data = data.map((e) => e.response.hits[0].result);
-  display(data, 1);
+  display(data);
+  getArtists(data);
 }
 
 async function cordToCity(loco) {
@@ -177,55 +188,31 @@ if (params.has("id")) {
       getSongs(searchBar.value);
     }
   }
-
-  /* form.onsubmit = (e) => {
+  
+  form.onsubmit = (e) => {
     if(searchBar.value.length > 0){
       getSongs(searchBar.value);
     }
     e.preventDefault();
-  } */
-
+  } 
+  
   //change divCont const on top to the element that will hold all the songs searched DO NOT DELETE
-  /* divCont.onclick = (e) => {
-   console.log(e.target);
-   let close = e.target.closest("ul");
-   console.log(close);
-   if (close != undefined && e.target.classList.contains("fa-play")) {
-     playMusicSample(close.dataset.id);
-     e.target.classlist.toggle("fa-play", "fa-pause");
- 
-   } else if (close != undefined && e.target.classList.contains("fa-pause")){
-     e.target.classlist.toggle("fa-play", "fa-pause");
-   } else if (close != undefined ){
- 
-   }
- }  */
-  navigator.geolocation.getCurrentPosition(cordToCity, cordToCity
-    , { enableHighAccuracy: true });
+   divCont.onclick = (e) => {
+    console.log(e.target);
+    let close = e.target.closest("ul");
+    console.log(close);
+    if (close != undefined && e.target.classList.contains("fa-play")) {
+      playMusicSample(close.dataset.id);
+      e.target.classlist.toggle("fa-play", "fa-pause");
+  
+    } else if (close != undefined && e.target.classList.contains("fa-pause")){
+      e.target.classlist.toggle("fa-play", "fa-pause");
+    } else if (close != undefined ){
+  
+    }
+  } 
 }
-//uncoment top 2 lines to activate top 10
+navigator.geolocation.getCurrentPosition(cordToCity, cordToCity
+  
+, {enableHighAccuracy:true});
 
-//THIS IS THE HTML CODE
-// <!DOCTYPE html>
-// <html lang="en">
-// <head>
-//   <meta charset="UTF-8">
-//   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-//   <script src="app.js" defer></script>
-//   <title>Document</title>
-// </head>
-// <body>
-//   <h1>Top 10</h1>
-//   <div>
-//     <ul class="top-songs">
-
-//     </ul>
-//   </div>
-// </body>
-// </html>
-
-/* songs.innerHTML += `
-<h2>${num}.</h2>
-<img src="${song.images.coverarthq}" width="200" height="200"/>
-<h3>${song.title}</h3>
-<h3>${song.subtitle}</h3> */
