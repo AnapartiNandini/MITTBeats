@@ -1,109 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <script src="app.js" defer></script>
-    <title>MITTBeats</title>
-  </head>
-  <header>
-    <div class="nav-wrapper">
-      <div class="nav">
-        <ul>
-          <li class="search">
-            <i class="material-icons-outlined">search</i>
-            <form>
-              <input size="40" type="search" id="search-bar" placeholder="Search" />
-            </form>
-          </li>
-          <div class="options"> 
-            <li><a href="#">New Music</a></li>
-            <li><a href="#">Library</a></li>
-            <li><a href="#">Downloads</a></li>
-            <li><a href="#">Categories</a></li>
-          </div>
-        </ul>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <script src="app.js" defer></script>
+  <title>MITTBeats</title>
+</head>
+<header>
+  <div class="nav-wrapper">
+    <div class="nav">
+      <ul>
+        <li class="search">
+          <i class="material-icons-outlined">search</i>
+          <form>
+            <input size="40" type="search" id="search-bar" placeholder="Search" />
+          </form>
+        </li>
+        <div class="options">
+          <li><a href="#">New Music</a></li>
+          <li><a href="#">Library</a></li>
+          <li><a href="#">Downloads</a></li>
+          <li><a href="#">Categories</a></li>
+        </div>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<body>
+  <aside>
+    <div class="sidebar-profile">
+      <img src="img/pfpexample.jpg" alt="Profile Photo" />
+      <!--sample profile image-->
+      <h3>Jane Doe</h3>
+      <!--sample username-->
+      <p>janedoe@gmail.com</p>
+      <!--sample email-->
+      <ul>
+        <li>
+          <a href="#"><span class="material-icons-outlined">radio</span>Radio</a>
+        </li>
+        <li>
+          <a href="#"><span class="material-icons-outlined">featured_play_list</span>My
+            Music</a>
+        </li>
+        <li>
+          <a href="#"><span class="material-icons-outlined">videocam</span>Video</a>
+        </li>
+        <li>
+          <a href="#"><span class="material-icons-outlined">podcasts</span>Podcast</a>
+        </li>
+        <li>
+          <a href="#"><span class="material-icons-outlined">music_video</span>Artists</a>
+        </li>
+        <li>
+          <a href="#"><span class="material-icons-outlined">logout</span>Logout</a>
+        </li>
+      </ul>
+      </ul>
+    </div>
+  </aside>
+  <div class="body-content">
+    <div class="top-ten">
+      <h2 class="labels">Today'S Top 10 Songs</h2>
+      <div>
+        <ul class="top-songs"></ul>
       </div>
     </div>
-  </header>
-
-  <body>
-    <aside>
-      <div class="sidebar-profile">
-        <img
-          src="img/pfpexample.jpg"
-          alt="Profile Photo"
-        />
-        <!--sample profile image-->
-        <h3>Jane Doe</h3>
-        <!--sample username-->
-        <p>janedoe@gmail.com</p>
-        <!--sample email-->
-        <ul>
-          <li>
-            <a href="#"
-              ><span class="material-icons-outlined">radio</span>Radio</a
-            >
-          </li>
-          <li>
-            <a href="#"
-              ><span class="material-icons-outlined">featured_play_list</span>My
-              Music</a
-            >
-          </li>
-          <li>
-            <a href="#"
-              ><span class="material-icons-outlined">videocam</span>Video</a
-            >
-          </li>
-          <li>
-            <a href="#"
-              ><span class="material-icons-outlined">podcasts</span>Podcast</a
-            >
-          </li>
-          <li>
-            <a href="#"
-              ><span class="material-icons-outlined">music_video</span
-              >Artists</a
-            >
-          </li>
-          <li>
-            <a href="#"
-              ><span class="material-icons-outlined">logout</span>Logout</a
-            >
-          </li>
-        </ul>
-        </ul>
-      </div>
-    </aside>
-    <div class="body-content">
-      <div class="top-ten">
-        <h2 class="labels">Today'S Top 10 Songs</h2>
-        <div>
-          <ul class="top-songs"></ul>
-        </div>
-     
-        </div>
-      <div class="featured-artists">
-        <h2 class="labels">Featured Artists</h2>
-        <div class="artists">
-
-        </div>
-      </div>
-      <div class="currently-playing-song">
-        <!-- 
+    <div class="featured-artists">
+      <h2 class="labels">Featured Artists</h2>
+      <div class="artists"></div>
+    </div>
+    <div class="currently-playing-song">
+      <!-- 
         ***sample code***
           <img />
           <h4>Song Name</h4>
           <p class="artist-name">Artist Name</p>
           <iframe height="50" width="500" src=""></iframe>
           <span class="material-icons-outlined">more_vert</span>
-      --></div>
+      -->
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
