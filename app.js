@@ -114,7 +114,7 @@ async function playMusicSample(id){
 
 
 
-//change lyrics const on top to the element that will hold all the songs searched DO NOT DELETE
+// change lyrics const on top to the element that will hold all the songs searched DO NOT DELETE
 lyrics.onclick = (e) => {
   console.log(e.target);
   let close = e.target.closest("ul");
@@ -126,6 +126,7 @@ lyrics.onclick = (e) => {
   } else if (close != undefined && e.target.classList.contains("fa-pause")){
   e.target.classlist.toggle("fa-play", "fa-pause");
   } else if (close != undefined ){
+  }
 
 async function getTopSongs(id){
   console.log(id);
@@ -137,7 +138,7 @@ async function getTopSongs(id){
   }
 } 
 
-//This is for the top 10's list
+// This is for the top 10's list
 let num = 0;
 async function getTopSongs(){
   let songs = document.querySelector('.top-songs');
@@ -155,13 +156,19 @@ async function getTopSongs(){
   data.tracks.forEach(song => {
     num++;
     songs.innerHTML += `
-      <h2>${num}.</h2>
+    <h1 class="number">${num}</h1>
+    <div class="song">
       <img src="${song.images.coverarthq}" width="200" height="200"/>
-      <h3>${song.title}</h3>
-      <h3>${song.subtitle}</h3>
+      <div class="overlay">
+        <h3 class="title">${song.title}</h3>
+        <h3 class="artist-name">${song.subtitle}</h3>
+      </div>
+    <div>
     `
   });
 }
+
+getTopSongs();
 
 async function cordToCity(loco) {
   if ("code" in loco) {
@@ -205,7 +212,8 @@ if (params.has("id")){
     }
   } 
 }
+}
 
-navigator.geolocation.getCurrentPosition(cordToCity, cordToCity
+// navigator.geolocation.getCurrentPosition(cordToCity, cordToCity
   
-, {enableHighAccuracy:true});
+// , {enableHighAccuracy:true});
