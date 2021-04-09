@@ -156,7 +156,6 @@ async function getTopSongs(){
   data.tracks.forEach(song => {
     num++;
     songs.innerHTML += `
-      <h2>${num}.</h2>
       <img src="${song.images.coverarthq}" width="200" height="200"/>
       <h3>${song.title}</h3>
       <h3>${song.subtitle}</h3>
