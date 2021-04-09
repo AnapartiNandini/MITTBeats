@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: white;
   background: #2b2b2b;
 }
@@ -10,10 +10,10 @@ body {
 }
 
 .material-icons-outlined {
-  font-family: 'Material Icons';
+  font-family: "Material Icons";
   font-weight: normal;
   font-style: normal;
-  font-size: 40px;  /* Preferred icon size */
+  font-size: 40px; /* Preferred icon size */
   display: inline-block;
   line-height: 1;
   text-transform: none;
@@ -31,11 +31,34 @@ main {
   margin-left: 300px;
 }
 
-
 .song {
   overflow: hidden;
   min-width: 200px;
   position: relative;
+}
+
+.play-button {
+  margin: 40px;
+  text-decoration: none;
+}
+
+.play-button a {
+  border-radius: 50%;
+  text-align: center;
+  line-height: 50px;
+  vertical-align: middle;
+  padding: 30px;
+}
+
+.play-button a.active {
+  background-color: #40ffc2;
+  color: white;
+}
+
+.play-button a:hover:not(.active) {
+  background-color: #40ffc2;
+  color: black;
+  border-radius: 50%;
 }
 
 .song img {
@@ -48,18 +71,22 @@ main {
   top: 0;
   left: 0;
   opacity: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.75) 0%,rgba(0,0,0,0) 100%);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
   padding: 20px;
   pointer-events: none;
   opacity: 0;
   width: 100%;
-  transition: opacity .125s ease;
+  transition: opacity 0.125s ease;
   word-wrap: break-word;
   white-space: normal;
 }
 
-.song:hover img{
-	transform:scale(1.25);
+.song:hover img {
+  transform: scale(1.25);
 }
 
 .song:hover .overlay {
@@ -71,12 +98,12 @@ main {
   display: inline-block;
   display: flex;
   align-items: center;
-  color: white
+  color: white;
 }
 
 .nav a {
   text-decoration: none;
-  color:white;
+  color: white;
   padding: 2px;
   display: inline-block;
 }
@@ -95,8 +122,8 @@ main {
 
 .nav ul {
   text-align: center;
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
   height: 60px;
   display: flex;
   flex-wrap: wrap;
@@ -149,10 +176,10 @@ main {
 .top-ten {
   margin-left: 30px;
   position: relative;
-	max-width: 95%;
+  max-width: 95%;
   overflow-x: hidden;
   overflow-y: hidden;
-  height: 320px;
+  height: 400px;
 }
 
 .recently-played {
@@ -161,7 +188,7 @@ main {
 
 .labels {
   font-size: 40px;
-  text-transform: uppercase; 
+  text-transform: uppercase;
   margin-bottom: 0;
 }
 
@@ -169,13 +196,13 @@ main {
   display: flex;
   align-items: center;
   padding: 0;
-  height: 320px; 
+  height: 400px;
   margin: 0;
-	box-sizing: border-box;
-	white-space: nowrap;
-	overflow-x: auto;
-	overflow-y: hidden;
-	-webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 header {
@@ -191,7 +218,7 @@ aside {
   display: block;
   margin: 0;
   padding: 0;
-  width: 300px; 
+  width: 300px;
   background-color: #2b2b2b;
   position: fixed;
   height: 100%;
@@ -203,11 +230,10 @@ aside img {
   border-radius: 50%;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
 }
 
-aside img, 
-aside ul,  
+aside img,
+aside ul,
 aside a {
   display: block;
   color: white;
@@ -223,8 +249,8 @@ aside li {
 }
 
 aside a {
- padding-bottom: 20px;
- font-size: 17px;
+  padding-bottom: 20px;
+  font-size: 17px;
 }
 
 aside .logout {
@@ -235,7 +261,7 @@ aside .logout {
 aside h3,
 aside p {
   display: block;
-  color:#40ffc2;
+  color: #40ffc2;
   text-align: center;
   margin: 0;
 }
@@ -246,16 +272,16 @@ aside h3 {
 
 aside p {
   color: grey;
-  font-size: 10px; 
+  font-size: 10px;
 }
- 
+
 aside a.active {
   background-color: #40ffc2;
   color: white;
 }
 
 aside a:hover:not(.active) {
-  background-color:#40ffc2 ;
+  background-color: #40ffc2;
   color: black;
   border-radius: 10px 10px 10px 10px;
-} 
+}
