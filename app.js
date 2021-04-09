@@ -1,8 +1,22 @@
 //TEMPORARY 
+<<<<<<< HEAD
+const divCont = document.querySelector('.body-content')
+||||||| daad787
+const divCont = document.querySelector('.item')
+=======
 const divCont = document.querySelector('.item');
+>>>>>>> 808f54b32a8ff09e766925c129d1ae8064ac7b10
 const form = document.querySelector('form');
+<<<<<<< HEAD
+const songDiv = document.querySelector('.top-songs');
+const searchBar = document.querySelector('input');
+||||||| daad787
+const songDiv = document.querySelector('.top-songs');
+const searchBar = document.querySelector('#search-bar');
+=======
 const searchBar = document.querySelector('#search-bar');
 const button = document.querySelector('button');
+>>>>>>> 808f54b32a8ff09e766925c129d1ae8064ac7b10
 const baseUrl = { shaz: "https://shazam.p.rapidapi.com/charts/", genius: "https://genius.p.rapidapi.com/", lyrics: "https://api.lyrics.ovh/v1/", download:"", city:"https://api.bigdatacloud.net/data/reverse-geocode-client?localityLanguage=en"};
 const iframe = document.getElementsByTagName("iframe")[0];
 const songs = document.querySelector('.top-songs');
@@ -76,7 +90,6 @@ async function getInfo(str){
 
 async function getSongsGenius(str){
   str = str.split(" ").join("%20");
-
   let data = await fetch(`${baseUrl.genius}search?q=${str}`, urlHeaders.genius2);
   data = await data.json();
   return data;
@@ -91,21 +104,18 @@ async function getSongs(str) {
     let images = song.result.header_image_thumbnail_url;
     let id = song.result.id;
     divCont.innerHTML += `
-      <ul data-id="${id}">
-      
-        <img src = "${images}"/>
-        <li class="song-name">
-        ${songName}
-        </li>
-        <li class="song-name">
-          <a href="song.html?id=${id}">song</a>
-        </li>
-        <li class="artist-name">
-        ${artistName}
-        </li>
-        <li class="song-name">
-        <i class="fas fa-play"></i>
-        </li>
+      <ul class="artists-song" data-id="${id}">
+        <div class="left">
+          <a href="song.html?id=${id}"><img src = "${images}"/></a>
+        </div>
+        <div class="right">
+          <li class="song-name">
+          ${songName}
+          </li>
+          <li class="artist-name">
+            ${artistName}
+          </li>
+        <div>
       </ul>
       `
   });
@@ -189,10 +199,22 @@ async function cordToCity(loco) {
       getSongs(searchBar.value);
     }
     e.preventDefault();
+<<<<<<< HEAD
+  } 
+  
+  //change divCont const on top to the element that will hold all the songs searched DO NOT DELETE
+   /* divCont.onclick = (e) => {
+||||||| daad787
+  } */
+  
+  //change divCont const on top to the element that will hold all the songs searched DO NOT DELETE
+   /* divCont.onclick = (e) => {
+=======
   } */
 
 /*   //change divCont const on top to the element that will hold all the songs searched DO NOT DELETE
    divCont.onclick = (e) => {
+>>>>>>> 808f54b32a8ff09e766925c129d1ae8064ac7b10
     console.log(e.target);
     let close = e.target.closest("ul");
     console.log(close);
