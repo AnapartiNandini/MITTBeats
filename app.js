@@ -115,31 +115,48 @@ async function playMusicSample(id){
 
 
 // change lyrics const on top to the element that will hold all the songs searched DO NOT DELETE
-lyrics.onclick = (e) => {
-  console.log(e.target);
-  let close = e.target.closest("ul");
-  console.log(close);
-  if (close != undefined && e.target.classList.contains("fa-play")) {
-    playMusicSample(close.dataset.id);
-    e.target.classlist.toggle("fa-play", "fa-pause");
+// lyrics.onclick = (e) => {
+//   console.log(e.target);
+//   let close = e.target.closest("ul");
+//   console.log(close);
+//   if (close != undefined && e.target.classList.contains("fa-play")) {
+//     playMusicSample(close.dataset.id);
+//     e.target.classlist.toggle("fa-play", "fa-pause");
 
-  } else if (close != undefined && e.target.classList.contains("fa-pause")){
-  e.target.classlist.toggle("fa-play", "fa-pause");
-  } else if (close != undefined ){
-  }
+//   } else if (close != undefined && e.target.classList.contains("fa-pause")){
+//   e.target.classlist.toggle("fa-play", "fa-pause");
+//   } else if (close != undefined ){
+//   }
 
+let num = 0;
 // async function getTopSongs(id){
 //   console.log(id);
-//   let data;
+//   let response;
 //   if (id === undefined){
-//    data = await fetch(`${baseUrl.shaz}track?locale=en-US&pageSize=10&startFrom=1`, urlHeaders.shazam2);
+//     response = await fetch(`${baseUrl.shaz}track?locale=en-US&pageSize=10&startFrom=1`, urlHeaders.shazam2);
 //   } else {
-//     data = await fetch(`${baseUrl.shaz}track?locale=en-US&listId=${id.listid}&pageSize=10`, urlHeaders.shazam2);
+//     response = await fetch(`${baseUrl.shaz}track?locale=en-US&listId=${id.listid}&pageSize=10`, urlHeaders.shazam2);
+//     let data = await response.json();
+//     console.log(data.tracks) 
+//     console.log(songs)
+//     data.tracks.length = 10
+//     data.tracks.forEach(song => {
+//       num++;
+//       songs.innerHTML += `
+//       <h1 class="number">${num}</h1>
+//       <div class="song">
+//         <img src="${song.images.coverarthq}" width="200" height="200"/>
+//         <div class="overlay">
+//           <h3 class="title">${song.title}</h3>
+//           <h3 class="artist-name">${song.subtitle}</h3>
+//         </div>
+//       <div>
+//       `
+//     });
 //   }
 // } 
 
 // This is for the top 10's list
-let num = 0;
 async function getTopSongs(){
   let songs = document.querySelector('.top-songs');
   let response = await fetch("https://shazam.p.rapidapi.com/charts/track?locale=en-US&listId=ip-country-chart-CA&pageSize=20&startFrom=0", {
@@ -190,29 +207,29 @@ if (params.has("id")){
     }
   }
   
-  form.onsubmit = (e) => {
-    if(searchBar.value.length > 0){
-      getSongs(searchBar.value);
-    }
-    e.preventDefault();
-  }
+  // form.onsubmit = (e) => {
+  //   if(searchBar.value.length > 0){
+  //     getSongs(searchBar.value);
+  //   }
+  //   e.preventDefault();
+  // }
   
   //change divCont const on top to the element that will hold all the songs searched DO NOT DELETE
-   divCont.onclick = (e) => {
-    console.log(e.target);
-    let close = e.target.closest("ul");
-    console.log(close);
-    if (close != undefined && e.target.classList.contains("fa-play")) {
-      playMusicSample(close.dataset.id);
-      e.target.classlist.toggle("fa-play", "fa-pause");
+  //  divCont.onclick = (e) => {
+  //   console.log(e.target);
+  //   let close = e.target.closest("ul");
+  //   console.log(close);
+  //   if (close != undefined && e.target.classList.contains("fa-play")) {
+  //     playMusicSample(close.dataset.id);
+  //     e.target.classlist.toggle("fa-play", "fa-pause");
   
-    } else if (close != undefined && e.target.classList.contains("fa-pause")){
-      e.target.classlist.toggle("fa-play", "fa-pause");
-    } else if (close != undefined ){
-    }
-  } 
+  //   } else if (close != undefined && e.target.classList.contains("fa-pause")){
+  //     e.target.classlist.toggle("fa-play", "fa-pause");
+  //   } else if (close != undefined ){
+  //   }
+  // } 
 }
-}
+
 
 // navigator.geolocation.getCurrentPosition(cordToCity, cordToCity
   
