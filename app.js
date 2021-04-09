@@ -1,12 +1,25 @@
 //TEMPORARY 
+<<<<<<< HEAD
 const divCont = document.querySelector('.body-content')
+||||||| daad787
+const divCont = document.querySelector('.item')
+=======
+const divCont = document.querySelector('.item');
+>>>>>>> 808f54b32a8ff09e766925c129d1ae8064ac7b10
 const form = document.querySelector('form');
+<<<<<<< HEAD
 const songDiv = document.querySelector('.top-songs');
 const searchBar = document.querySelector('input');
+||||||| daad787
+const songDiv = document.querySelector('.top-songs');
+const searchBar = document.querySelector('#search-bar');
+=======
+const searchBar = document.querySelector('#search-bar');
+const button = document.querySelector('button');
+>>>>>>> 808f54b32a8ff09e766925c129d1ae8064ac7b10
 const baseUrl = { shaz: "https://shazam.p.rapidapi.com/charts/", genius: "https://genius.p.rapidapi.com/", lyrics: "https://api.lyrics.ovh/v1/", download:"", city:"https://api.bigdatacloud.net/data/reverse-geocode-client?localityLanguage=en"};
-const iframe = document.querySelector("iframe");
+const iframe = document.getElementsByTagName("iframe")[0];
 const songs = document.querySelector('.top-songs');
-let  artistID = [];
 const params = new URLSearchParams(window.location.search);
 const urlHeaders = {
   genius1: {
@@ -41,22 +54,16 @@ const urlHeaders = {
 
 // type 1 === top 10 that need to be disoplayed
 //type 2 === lyrics and download links for page 
+//type 3 === artists
 function display(data,type){
   if (type === 1) {
-      data.forEach((song,i) => {
-        songDiv.innerHTML += `
-        <h1 class="number">${i + 1}</h1>
-        <div class="song" data-id="${song.id}">
-          <img src="${song.song_art_image_url}" width="200" height="200"/>
-          <div class="overlay">
-            <h3 class="title">${song.title}</h3>
-            <h3 class="artist-name">${song.primary_artist.name}</h3>
-          </div>
-        <div>
-        `
-      });
+    for ( const obj of data){
+      //insert html
+    }
   } else if (type === 2) {
     let item = getInfo(data);
+  } else if (type === 3) {
+    //insertHtml
   }
 }
 
@@ -119,6 +126,7 @@ async function getCityId(coun){
   data = await data.json();
 
   let dataMusic;
+  console.log(dataMusic);
   data.countries.forEach((e) => {
     if (e.name.toLowerCase() === coun.countryName.toLowerCase()) {
       dataMusic = e.cities.find((city) => {
@@ -135,6 +143,10 @@ async function getCityId(coun){
   getTopSongs(dataMusic);
 }
 
+async function getArtists(data) {
+  data = data.map((e) => e.primary_artist);
+  display(data, 3);
+}
 async function getTopSongs(id){
   console.log(id);
   let data;
@@ -149,7 +161,8 @@ async function getTopSongs(id){
   })
   data = await Promise.all(data);
   data = data.map((e) => e.response.hits[0].result);
-  display(data, 1);
+  display(data);
+  getArtists(data);
 }
 
 async function cordToCity(loco) {
@@ -163,7 +176,7 @@ async function cordToCity(loco) {
   getCityId(data);
 }
 
-if (params.has("id")){
+/* if (params.has("id")){
   display(params.get("id"),2);
 } else {
   searchBar.onkeyup  = (e) => {
@@ -177,10 +190,22 @@ if (params.has("id")){
       getSongs(searchBar.value);
     }
     e.preventDefault();
+<<<<<<< HEAD
   } 
   
   //change divCont const on top to the element that will hold all the songs searched DO NOT DELETE
    /* divCont.onclick = (e) => {
+||||||| daad787
+  } */
+  
+  //change divCont const on top to the element that will hold all the songs searched DO NOT DELETE
+   /* divCont.onclick = (e) => {
+=======
+  } */
+
+/*   //change divCont const on top to the element that will hold all the songs searched DO NOT DELETE
+   divCont.onclick = (e) => {
+>>>>>>> 808f54b32a8ff09e766925c129d1ae8064ac7b10
     console.log(e.target);
     let close = e.target.closest("ul");
     console.log(close);
@@ -196,7 +221,6 @@ if (params.has("id")){
   }  */
 navigator.geolocation.getCurrentPosition(cordToCity, cordToCity
   , {enableHighAccuracy:true});
-}
 
 
 //uncoment top 2 lines to activate top 10
