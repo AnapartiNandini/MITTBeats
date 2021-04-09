@@ -128,15 +128,15 @@ lyrics.onclick = (e) => {
   } else if (close != undefined ){
   }
 
-async function getTopSongs(id){
-  console.log(id);
-  let data;
-  if (id === undefined){
-   data = await fetch(`${baseUrl.shaz}track?locale=en-US&pageSize=10&startFrom=1`, urlHeaders.shazam2);
-  } else {
-    data = await fetch(`${baseUrl.shaz}track?locale=en-US&listId=${id.listid}&pageSize=10`, urlHeaders.shazam2);
-  }
-} 
+// async function getTopSongs(id){
+//   console.log(id);
+//   let data;
+//   if (id === undefined){
+//    data = await fetch(`${baseUrl.shaz}track?locale=en-US&pageSize=10&startFrom=1`, urlHeaders.shazam2);
+//   } else {
+//     data = await fetch(`${baseUrl.shaz}track?locale=en-US&listId=${id.listid}&pageSize=10`, urlHeaders.shazam2);
+//   }
+// } 
 
 // This is for the top 10's list
 let num = 0;
