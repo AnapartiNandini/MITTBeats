@@ -1,8 +1,9 @@
 //TEMPORARY 
-const divCont = document.querySelector('.body-content')
+const divCont = document.querySelector('.body-content');
 const form = document.querySelector('form');
 const songDiv = document.querySelector('.top-songs');
-const searchBar = document.querySelector('input');
+const searchBar = document.querySelector('#search-bar');
+const button = document.querySelector('button');
 const baseUrl = { shaz: "https://shazam.p.rapidapi.com/charts/", genius: "https://genius.p.rapidapi.com/", lyrics: "https://api.lyrics.ovh/v1/", download:"", city:"https://api.bigdatacloud.net/data/reverse-geocode-client?localityLanguage=en"};
 const iframe = document.getElementsByTagName("iframe")[0];
 const songs = document.querySelector('.top-songs');
@@ -25,17 +26,17 @@ const urlHeaders = {
   shazam1: {
     "method": "GET",
     "headers": {
-      "x-rapidapi-key": "4616b7ae9cmshb6e506f5ffff27ep1fe324jsn702dc6119fbe",
+      "x-rapidapi-key": "610ad29b0bmshfd6c939c7547495p1c3f93jsn2ca0556b4d1d",
       "x-rapidapi-host": "shazam.p.rapidapi.com"
     }
   },
   shazam2: {
     "method": "GET",
     "headers": {
-      "x-rapidapi-key": "2247980046msh68a22faa7c63535p109a44jsn81484c7d80bf",
-      "x-rapidapi-host": "shazam.p.rapidapi.com"
+        "x-rapidapi-key": "e747355dd1mshe2c4dcb5fe7cad9p12f3d4jsn327270b916ee",
+        "x-rapidapi-host": "shazam.p.rapidapi.com"
     }
-  }
+}
 }
 
 // type 1 === top 10 that need to be disoplayed
@@ -43,6 +44,7 @@ const urlHeaders = {
 //type 3 === artists
 function display(data,type){
   if (type === 1) {
+<<<<<<< HEAD
     data.forEach((song, i) => {
       songDiv.innerHTML += `
         <h1 class="number">${i + 1}</h1>
@@ -61,9 +63,29 @@ function display(data,type){
     for ( const obj of data){
       //insert html
     }
+||||||| 9ff5599
+    for ( const obj of data){
+      //insert html
+    }
+=======
+    data.forEach((song,i) => {
+      songDiv.innerHTML += `
+      <h1 class="number">${i + 1}</h1>
+      <div class="song" data-id="${song.id}">
+        <img src="${song.song_art_image_url}" width="200" height="200"/>
+        <div class="overlay">
+          <h3 class="title">${song.title}</h3>
+          <h3 class="artist-name">${song.primary_artist.name}</h3>
+        </div>
+      <div>
+      `
+    });
+>>>>>>> 9a7511ba2a2020c034a1e3a51daefb53f3d78d27
   } else if (type === 2) {
     let item = getInfo(data);
+    console.log(item);
   } else if (type === 3) {
+    console.log(data);
     //insertHtml
   }
 }
@@ -151,6 +173,7 @@ async function getArtists(data) {
   data = data.map((e) => e.primary_artist);
   display(data, 3);
 }
+
 async function getTopSongs(id){
   console.log(id);
   let data;
@@ -165,7 +188,7 @@ async function getTopSongs(id){
   })
   data = await Promise.all(data);
   data = data.map((e) => e.response.hits[0].result);
-  display(data);
+  display(data,1);
   getArtists(data);
 }
 
@@ -180,22 +203,29 @@ async function cordToCity(loco) {
   getCityId(data);
 }
 
+<<<<<<< HEAD
 if (params.has("id")) {
   display(params.get("id"), 2);
+||||||| 9ff5599
+if (params.has("id")){
+  display(params.get("id"),2);
+=======
+ if (params.has("id")){
+  display(params.get("id"),2);
+>>>>>>> 9a7511ba2a2020c034a1e3a51daefb53f3d78d27
 } else {
   searchBar.onkeyup = (e) => {
     if (searchBar.value.length >= 3) {
       getSongs(searchBar.value);
     }
   }
-  
   form.onsubmit = (e) => {
     if(searchBar.value.length > 0){
       getSongs(searchBar.value);
     }
     e.preventDefault();
   } 
-  
+
   //change divCont const on top to the element that will hold all the songs searched DO NOT DELETE
    divCont.onclick = (e) => {
     console.log(e.target);
@@ -211,8 +241,7 @@ if (params.has("id")) {
   
     }
   } 
-}
 navigator.geolocation.getCurrentPosition(cordToCity, cordToCity
+  , {enableHighAccuracy:true});
+}
   
-, {enableHighAccuracy:true});
-
