@@ -1,5 +1,4 @@
 //TEMPORARY 
-const listofArtists = document.querySelector('.artists');
 const divCont = document.querySelector('.item')
 const form = document.querySelector('form');
 const songDiv = document.querySelector('.top-songs');
@@ -40,45 +39,6 @@ const urlHeaders = {
   }
 }
 
-async function getFeaturedArtists() {
-  let response =  await fetch("https://shazam.p.rapidapi.com/songs/list-recommendations?key=508501557&locale=en-US", {
-    "method": "GET",
-    "headers": {
-      "x-rapidapi-key": "4616b7ae9cmshb6e506f5ffff27ep1fe324jsn702dc6119fbe",
-      "x-rapidapi-host": "shazam.p.rapidapi.com"
-    }
-  })
-  let data = await response.json();
-  data.tracks.forEach(song => {
-    if (song.artists != undefined) {
-      artistID.push(song.subtitle);
-    }
-  });
-  artistID.length = 5;
-  await Promise.all(
-    artistID.map(async song => {
-      let response = await fetch(`https://shazam.p.rapidapi.com/search?term=${song}&locale=en-US&offset=0&limit=5`, {
-        "method": "GET",
-        "headers": {
-          "x-rapidapi-key": "4616b7ae9cmshb6e506f5ffff27ep1fe324jsn702dc6119fbe",
-          "x-rapidapi-host": "shazam.p.rapidapi.com"
-        }
-      })
-      let data = await response.json();
-      console.log(data)
-      listofArtists.innerHTML += `
-      <li>
-        <img src="${song.artist[0].avatar}"/>
-        <h3>${song.artist[0].name}</h3>
-      </li>
-      `
-    })
-  
-  )
-  
-}
-
-getFeaturedArtists();
 // type 1 === top 10 that need to be disoplayed
 //type 2 === lyrics and download links for page 
 function display(data,type){
