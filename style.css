@@ -79,7 +79,7 @@ main {
 }
 
 .nav a:hover {
-  border-bottom: 1px solid #f53864 ;
+  border-bottom: 5px solid #40ffc2;
 }
 
 .number {
@@ -176,7 +176,6 @@ main {
 }
 
 header {
-  margin-left: 300px;
   padding: 0;
 }
 
@@ -185,6 +184,7 @@ header {
 }
 
 aside {
+  overflow-y: hidden;
   display: block;
   margin: 0;
   padding: 0;
@@ -192,11 +192,8 @@ aside {
   background-color: #2b2b2b;
   position: fixed;
   height: 100%;
-  overflow: auto;
   color: white;
 }
-
-
 
 aside img {
   width: 150px;
@@ -235,7 +232,7 @@ aside .logout {
 aside h3,
 aside p {
   display: block;
-  color:  #f53864 ;
+  color:#40ffc2;
   text-align: center;
   margin: 0;
 }
@@ -250,12 +247,12 @@ aside p {
 }
  
 aside a.active {
-  background-color: #4CAF50;
+  background-color: #40ffc2;
   color: white;
 }
 
 aside a:hover:not(.active) {
-  background-color: #f53864 ;
-  color: white;
+  background-color:#40ffc2 ;
+  color: black;
   border-radius: 10px 10px 10px 10px;
 } 
