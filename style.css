@@ -189,10 +189,11 @@ aside {
   margin: 0;
   padding: 0;
   width: 300px; 
-  background-color: white;
+  background-color: #2b2b2b;
   position: fixed;
   height: 100%;
   overflow: auto;
+  color: white;
 }
 
 
@@ -209,14 +210,14 @@ aside img,
 aside ul,  
 aside a {
   display: block;
-  color: black;
+  color: white;
   padding: 16px;
   text-decoration: none;
 }
 
 aside li {
   display: block;
-  color: black;
+  color: white;
   padding: 2px 16px 2px 16px;
   text-decoration: none;
 }
@@ -234,7 +235,7 @@ aside .logout {
 aside h3,
 aside p {
   display: block;
-  color: black;
+  color:  #f53864 ;
   text-align: center;
   margin: 0;
 }
@@ -254,7 +255,7 @@ aside a.active {
 }
 
 aside a:hover:not(.active) {
-  background-color:rgb(255, 156, 126);
+  background-color: #f53864 ;
   color: white;
   border-radius: 10px 10px 10px 10px;
 } 
