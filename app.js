@@ -43,9 +43,18 @@ const urlHeaders = {
 //type 3 === artists
 function display(data,type){
   if (type === 1) {
-    for ( const obj of data){
-      //insert html
-    }
+    data.forEach((song,i) => {
+      songDiv.innerHTML += `
+      <h1 class="number">${i + 1}</h1>
+      <div class="song" data-id="${song.id}">
+        <img src="${song.song_art_image_url}" width="200" height="200"/>
+        <div class="overlay">
+          <h3 class="title">${song.title}</h3>
+          <h3 class="artist-name">${song.primary_artist.name}</h3>
+        </div>
+      <div>
+      `
+    });
   } else if (type === 2) {
     let item = getInfo(data);
   } else if (type === 3) {
