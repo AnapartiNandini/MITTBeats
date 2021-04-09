@@ -13,7 +13,7 @@ body {
   font-family: 'Material Icons';
   font-weight: normal;
   font-style: normal;
-  font-size: 30px;  /* Preferred icon size */
+  font-size: 40px;  /* Preferred icon size */
   display: inline-block;
   line-height: 1;
   text-transform: none;
@@ -42,6 +42,7 @@ main {
   text-decoration: none;
   color:white;
   padding: 2px;
+  display: inline-block;
 }
 
 .nav a:hover {
@@ -59,6 +60,7 @@ main {
 }
 
 .search {
+  position: relative;
   width: 30%;
   display: flex;
   align-items: center;
@@ -70,13 +72,22 @@ main {
   border-radius: 10px;
   border: 0 solid;
   padding: 10px;
+  text-indent: 30px;
+}
+
+.search .material-icons-outlined {
+  font-size: 24px;
+  color: black;
+  position: absolute;
+  top: 18px;
+  left: 7px;
+  width: 30px;
 }
 
 .options {
   display: flex;
   justify-content: left;
   align-items: center;
-  width: 300px;
   margin-right: 50px;
 }
 
@@ -90,12 +101,14 @@ main {
   background-color: #383737;
   border-radius: 20px;
 }
-.top-ten {
-  display: inline-block;
-}
+/* .top-ten {
+  display: flex;
+  align-items: center;
+} */
 
 .top-songs {
-  display: inline-block;
+  display: flex;
+  align-items: center;
 }
 
 header {
@@ -118,6 +131,8 @@ aside {
   height: 100%;
   overflow: auto;
 }
+
+
 
 aside img {
   width: 150px;

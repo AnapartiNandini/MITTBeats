@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,14 +15,16 @@
   <div class="nav-wrapper">
     <div class="nav">
       <ul>
-        <li>
-          <span class="material-icons-outlined">search</span><input type="search" id="search-bar"
-            placeholder="Search" />
-        </li>
-        <li><a href="#">New Music</a></li>
-        <li><a href="#">Library</a></li>
-        <li><a href="#">Downloads</a></li>
-        <li><a href="#">Categories</a></li>
+        <div class="search">
+          <i class="material-icons-outlined">search</i>
+          <li><input type="search" id="search-bar" placeholder="Search" size="40"/></li>
+        </div>
+        <div class="options">
+          <li><a href="#">New Music</a></li>
+          <li><a href="#">Library</a></li>
+          <li><a href="#">Downloads</a></li>
+          <li><a href="#">Categories</a></li>
+        </div>
       </ul>
     </div>
   </div>
@@ -79,7 +82,7 @@
         </div> 
       -->
     </div>
-    <div>
+    <div class="top-ten">
       <h2>Top 10</h2>
       <div>
         <ul class="top-songs"></ul>

@@ -115,27 +115,28 @@ async function playMusicSample(id){
 
 
 //change lyrics const on top to the element that will hold all the songs searched DO NOT DELETE
-lyrics.onclick = (e) => {
-  console.log(e.target);
-  let close = e.target.closest("ul");
-  console.log(close);
-  if (close != undefined && e.target.classList.contains("fa-play")) {
-    playMusicSample(close.dataset.id);
-    e.target.classlist.toggle("fa-play", "fa-pause");
+// lyrics.onclick = (e) => {
+//   console.log(e.target);
+//   let close = e.target.closest("ul");
+//   console.log(close);
+//   if (close != undefined && e.target.classList.contains("fa-play")) {
+//     playMusicSample(close.dataset.id);
+//     e.target.classlist.toggle("fa-play", "fa-pause");
 
-  } else if (close != undefined && e.target.classList.contains("fa-pause")){
-  e.target.classlist.toggle("fa-play", "fa-pause");
-  } else if (close != undefined ){
+//   } else if (close != undefined && e.target.classList.contains("fa-pause")){
+//   e.target.classlist.toggle("fa-play", "fa-pause");
+//   } else if (close != undefined ){
+//   }
 
-async function getTopSongs(id){
-  console.log(id);
-  let data;
-  if (id === undefined){
-   data = await fetch(`${baseUrl.shaz}track?locale=en-US&pageSize=10&startFrom=1`, urlHeaders.shazam2);
-  } else {
-    data = await fetch(`${baseUrl.shaz}track?locale=en-US&listId=${id.listid}&pageSize=10`, urlHeaders.shazam2);
-  }
-} 
+// async function getTopSongs(id){
+//   console.log(id);
+//   let data;
+//   if (id === undefined){
+//    data = await fetch(`${baseUrl.shaz}track?locale=en-US&pageSize=10&startFrom=1`, urlHeaders.shazam2);
+//   } else {
+//     data = await fetch(`${baseUrl.shaz}track?locale=en-US&listId=${id.listid}&pageSize=10`, urlHeaders.shazam2);
+//   }
+// } 
 
 //This is for the top 10's list
 let num = 0;
@@ -162,6 +163,8 @@ async function getTopSongs(){
     `
   });
 }
+
+getTopSongs();
 
 async function cordToCity(loco) {
   if ("code" in loco) {
@@ -206,6 +209,6 @@ if (params.has("id")){
   } 
 }
 
-navigator.geolocation.getCurrentPosition(cordToCity, cordToCity
+// navigator.geolocation.getCurrentPosition(cordToCity, cordToCity
   
-, {enableHighAccuracy:true});
+// , {enableHighAccuracy:true});
