@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: Verdana,Tahoma, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   color: white;
   background: #2b2b2b;
 }
@@ -31,6 +31,39 @@ main {
   margin-left: 300px;
 }
 
+
+.song {
+  overflow: hidden;
+  min-width: 200px;
+  position: relative;
+}
+
+.song img {
+  display: block;
+  transition: all 1s ease;
+}
+
+.song .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.75) 0%,rgba(0,0,0,0) 100%);
+  padding: 20px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .125s ease;
+}
+
+.song:hover img{
+	transform:scale(1.25);
+}
+
+.song:hover .overlay {
+  opacity: 1;
+  pointer-events: all;
+}
+
 .nav li {
   display: inline-block;
   display: flex;
@@ -47,6 +80,14 @@ main {
 
 .nav a:hover {
   border-bottom: 1px solid #f53864 ;
+}
+
+.number {
+  font-size: 200px;
+  margin: 0;
+  padding-left: 15px;
+  color: rgba(0, 0, 0, 0);
+  -webkit-text-stroke: 5px #8a8a8a;
 }
 
 .nav ul {
@@ -97,23 +138,45 @@ main {
 }
 
 .nav-wrapper {
-  width: 75%;
+  width: 100%;
   background-color: #383737;
   border-radius: 20px;
 }
 
 .top-ten {
   margin-left: 30px;
+  position: relative;
+	max-width: 95%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  height: 320px;
+}
+
+.recently-played {
+  margin-left: 30px;
+}
+
+.labels {
+  font-size: 40px;
+  text-transform: uppercase; 
+  margin-bottom: 0;
 }
 
 .top-songs {
   display: flex;
   align-items: center;
+  padding: 0;
+  height: 320px; 
+  margin: 0;
+	box-sizing: border-box;
+	white-space: nowrap;
+	overflow-x: auto;
+	overflow-y: hidden;
+	-webkit-overflow-scrolling: touch;
 }
 
 header {
   margin-left: 300px;
-  width: 100%;
   padding: 0;
 }
 
