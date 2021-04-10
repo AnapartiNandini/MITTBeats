@@ -37,6 +37,10 @@ main {
   position: relative;
 }
 
+.song-name {
+  font-size: 36px;
+}
+
 .play-button {
   margin: 30px 40px 40px 40px;
   text-decoration: none;
@@ -292,6 +296,11 @@ aside a:hover:not(.active) {
   width: 200px;
   height: 200px;
 } 
+
+.artist-name {
+  text-decoration: underline;
+  color: #40ffc2;
+}
 
 .artists-song li {
   list-style: none;

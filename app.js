@@ -114,7 +114,8 @@ async function getSongs(str) {
   let data = await getSongsGenius(str);
   divCont.innerHTML = "";
   divCont.innerHTML = `<div class="back-to-home"><i class="material-icons" style="font-size:48px;color:white">arrow_back</i></div>`
-  arrowExists = true;
+  divCont.innerHTML = `<h1>search results for ${str} </h1>`
+  console.log(data)
   data.response.hits.forEach(song => {
     let songName = song.result.title_with_featured;
     let artistName = song.result.primary_artist.name;
@@ -130,9 +131,11 @@ async function getSongs(str) {
           <li class="song-name">
           ${songName}
           </li>
-          <li class="artist-name">
-            ${artistName}
-          </li>
+          <a href="artists-info.html?id=${song.result.primary_artist.id}">
+            <li class="artist-name">
+              ${artistName}
+            </li>
+          </a>
         <div>
       </ul>
       </a>

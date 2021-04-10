@@ -41,7 +41,7 @@ async function getArtistTopSongs(id) {
   })
   let data = await response.json();
   let output =  data.response.songs.filter(song => song.primary_artist.name == artistname);
-  if(output.length > 5){
+  if(output.length >= 5){
     output.forEach(song => {
       artistSongs.innerHTML += `
       <a href="song.html?id=${id}">
@@ -53,15 +53,12 @@ async function getArtistTopSongs(id) {
             <li class="song-name">
             ${song.title}
             </li>
-            <li class="artist-name">
-              ${song.primary_artist.name}
-            </li>
           <div>
         </ul>
         </a>
       `
     });
-  } else if (output.length < 5) {
+  } else if (output.length <= 5) {
     data.response.songs.forEach(song => {
       artistSongs.innerHTML += `
       <a href="song.html?id=${id}">
@@ -72,9 +69,6 @@ async function getArtistTopSongs(id) {
             <div class="right">
             <li class="song-name">
             ${song.title}
-            </li>
-            <li class="artist-name">
-              ${song.primary_artist.name}
             </li>
           <div>
         </ul>
