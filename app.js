@@ -88,6 +88,12 @@ function display(data,type){
   }
 }
 
+featured.addEventListener('click', function(e) {
+  if(e.target.classList === "featured-song") {
+    console.log(e.target)
+  }
+});
+
 async function getInfo(str) {
   let data = await fetch(`${baseUrl.genius}songs/${str}`, urlHeaders.genius2);
   data = await data.json();
