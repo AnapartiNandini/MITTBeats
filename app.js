@@ -1,4 +1,12 @@
 //TEMPORARY 
+const modal = document.getElementById("myModal");
+const span = document.getElementsByClassName("close")[0];
+const modalForm = document.querySelector('.modal-content form');
+const nameInput = document.querySelector('.modal-content .input-name');
+const emailInput = document.querySelector('.modal-content .input-email');
+const userName = document.querySelector('.sidebar-profile .user-name')
+const userEmail = document.querySelector('.sidebar-profile .user-email')
+const arrow = document.querySelector('.back-to-home');
 const divCont = document.querySelector('.body-content');
 const featured = document.querySelector('.artists');
 const form = document.querySelector('form');
@@ -101,6 +109,7 @@ async function getSongsGenius(str) {
 async function getSongs(str) {
   let data = await getSongsGenius(str);
   divCont.innerHTML = "";
+  divCont.innerHTML = `<div class="back-to-home"><i class="material-icons" style="font-size:48px;color:white">arrow_back</i></div>`
   data.response.hits.forEach(song => {
     let songName = song.result.title_with_featured;
     let artistName = song.result.primary_artist.name;
@@ -225,4 +234,32 @@ async function cordToCity(loco) {
 navigator.geolocation.getCurrentPosition(cordToCity, cordToCity
   , {enableHighAccuracy:true});
 }
-  
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+  localStorage.setItem('name', nameInput.value)
+  localStorage.setItem('email', emailInput.value)
+  userName.textContent = nameInput.value;
+  userEmail.textContent = emailInput.value;
+}
+
+modalForm.onsubmit = function(){
+  modal.style.display = "none";
+  localStorage.setItem('name', nameInput.value)
+  localStorage.setItem('email', emailInput.value)
+  userName.textContent = nameInput.value;
+  userEmail.textContent = emailInput.value;
+}
+
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+    localStorage.setItem('name', nameInput.value)
+    localStorage.setItem('email', emailInput.value)
+    userName.textContent = nameInput.value;
+    userEmail.textContent = emailInput.value;
+  }
+}

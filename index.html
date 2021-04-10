@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -35,13 +36,29 @@
 </header>
 
 <body>
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>before we begin...</p>
+      <form>
+        <label>Name</label>
+        <input class="input-name" type="text" placeholder="Enter your name">
+        <label>Email</label>
+        <input class="input-email"type="text" placeholder="Enter your email">
+      </form>
+    </div>
+
+  </div>
   <aside>
     <div class="sidebar-profile">
       <img src="img/pfpexample.jpg" alt="Profile Photo" />
       <!--sample profile image-->
-      <h3>Jane Doe</h3>
+      <h3 class="user-name"></h3>
       <!--sample username-->
-      <p>janedoe@gmail.com</p>
+      <p class="user-email"></p>
       <!--sample email-->
       <ul>
         <li>
@@ -69,7 +86,7 @@
   </aside>
   <div class="body-content">
     <div class="top-ten">
-      <h2 class="labels">Today'S Top 10 Songs</h2>
+      <h2 class="labels">Today's Top 10 Songs</h2>
       <div>
         <ul class="top-songs"></ul>
       </div>
