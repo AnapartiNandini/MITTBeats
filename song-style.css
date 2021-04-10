@@ -1,3 +1,154 @@
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  background: #2e2d2d;
+  overflow-y: hidden;
+}
+
 * {
   box-sizing: border-box;
+}
+.material-icons-outlined {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 40px; /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  margin-right: 3px;
+  position: relative;
+  top: 5px;
+  right: 5px;
+}
+
+.container .backImage {
+  grid-area: coverimg;
+  position: relative;
+  text-align: center;
+}
+
+.container .backImage img {
+  width: 65%;
+  opacity: 0.625;
+  margin: 10% 0;
+  vertical-align: middle;
+}
+
+.container .song-lyrics {
+  grid-area: songlyrics;
+  text-align: center;
+  white-space: pre-line;
+  height: 50%;
+  padding-bottom: 150px;
+  overflow-y: scroll;
+}
+
+.container .song-lyrics .song-info {
+  border-bottom: 1px solid white;
+  width: 90%;
+}
+
+.song-info p, .song-info h1 {
+  margin: 0;
+}
+
+.song-lyrics .lyrics {
+  width: 90%;
+}
+
+.container .song-audio {
+  width: 90%;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: 
+  "coverimg songlyrics";
+}
+
+.nav li {
+  display: inline-block;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.nav a {
+  text-decoration: none;
+  color: white;
+  padding: 2px;
+  display: inline-block;
+}
+
+.nav a:hover {
+  border-bottom: 5px solid #40ffc2;
+}
+
+.number {
+  font-size: 200px;
+  margin: 0;
+  padding-left: 15px;
+  color: rgba(0, 0, 0, 0);
+  -webkit-text-stroke: 5px #8a8a8a;
+}
+
+.nav ul {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  height: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.search {
+  position: relative;
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  margin-left: 50px;
+}
+
+.search input {
+  border-radius: 10px;
+  border: 0 solid;
+  padding: 10px;
+  text-indent: 30px;
+}
+
+.search .material-icons-outlined {
+  font-size: 24px;
+  color: black;
+  position: absolute;
+  top: 18px;
+  left: 7px;
+  width: 30px;
+}
+
+.options {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-right: 50px;
+}
+
+.options li {
+  padding: 5px;
+  margin: auto;
+}
+
+.nav-wrapper {
+  width: 100%;
+  background-color: #383737;
+  border-radius: 20px;
 }

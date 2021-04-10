@@ -55,7 +55,6 @@ main {
 }
 
 .play-button a:hover:not(.active) {
-
   color:  #40ffc2;;
 }
 
@@ -253,12 +252,7 @@ aside li {
 
 aside a {
   padding-bottom: 20px;
-  font-size: 17px;
-}
-
-aside .logout {
-  margin-top: 20%;
-  vertical-align: text-bottom;
+  font-size: 18px;
 }
 
 aside h3,
