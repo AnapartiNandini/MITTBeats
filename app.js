@@ -79,20 +79,17 @@ function display(data,type){
     console.log(data);
     data.forEach(element => {
       featured.innerHTML += `
-      <div class="featured-song">
-       <img src="${element.image_url}"/>
-       <h3>${element.name}</h3>
-      </div>
+      <a href="artists-info.html?id=${element.id}">
+        <div class="featured-song" data-artist-id="${element.id}">
+        <img src="${element.image_url}"/>
+        <h3>${element.name}</h3>
+        </div>
+      </a>
       `
     });
   }
 }
 
-featured.addEventListener('click', function(e) {
-  if(e.target.classList === "featured-song") {
-    console.log(e.target)
-  }
-});
 
 async function getInfo(str) {
   let data = await fetch(`${baseUrl.genius}songs/${str}`, urlHeaders.genius2);
@@ -225,7 +222,7 @@ async function cordToCity(loco) {
 
   //change divCont const on top to the element that will hold all the songs searched DO NOT DELETE
    divCont.onclick = (e) => {
-    console.log(e.target);
+    console.log(e.target)
     let close = e.target.closest("ul");
     console.log(close);
     if (close != undefined && e.target.classList.contains("fa-play")) {
