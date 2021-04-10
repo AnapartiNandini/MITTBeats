@@ -1,5 +1,14 @@
 //TEMPORARY 
+const modal = document.getElementById("myModal");
+const span = document.getElementsByClassName("close")[0];
+const modalForm = document.querySelector('.modal-content form');
+const nameInput = document.querySelector('.modal-content .input-name');
+const emailInput = document.querySelector('.modal-content .input-email');
+const userName = document.querySelector('.sidebar-profile .user-name')
+const userEmail = document.querySelector('.sidebar-profile .user-email')
+const arrow = document.querySelector('.back-to-home');
 const divCont = document.querySelector('.body-content');
+const featured = document.querySelector('.artists');
 const form = document.querySelector('form');
 const songDiv = document.querySelector('.top-songs');
 const searchBar = document.querySelector('#search-bar');
@@ -8,6 +17,7 @@ const baseUrl = { shaz: "https://shazam.p.rapidapi.com/charts/", genius: "https:
 const iframe = document.getElementsByTagName("iframe")[0];
 const songs = document.querySelector('.top-songs');
 const params = new URLSearchParams(window.location.search);
+
 const urlHeaders = {
   genius1: {
     "method": "GET",
@@ -67,7 +77,14 @@ function display(data,type){
     console.log(item);
   } else if (type === 3) {
     console.log(data);
-    //insertHtml
+    data.forEach(element => {
+      featured.innerHTML += `
+      <div class="featured-song">
+       <img src="${element.image_url}"/>
+       <h3>${element.name}</h3>
+      </div>
+      `
+    });
   }
 }
 
@@ -93,6 +110,8 @@ async function getSongsGenius(str) {
 async function getSongs(str) {
   let data = await getSongsGenius(str);
   divCont.innerHTML = "";
+  divCont.innerHTML = `<div class="back-to-home"><i class="material-icons" style="font-size:48px;color:white">arrow_back</i></div>`
+  arrowExists = true;
   data.response.hits.forEach(song => {
     let songName = song.result.title_with_featured;
     let artistName = song.result.primary_artist.name;
@@ -123,8 +142,6 @@ async function playMusicSample(id) {
   data = await data.json();
   iframe.src = `${data.response.song.apple_music_player_url}`;
 }
-
-
 
 //This is for the top 10's list
 async function getCityId(coun) {
@@ -169,6 +186,7 @@ async function getTopSongs(id){
   })
   data = await Promise.all(data);
   data = data.map((e) => e.response.hits[0].result);
+  toptendata = data;
   display(data,1);
   getArtists(data);
 }
@@ -217,4 +235,23 @@ async function cordToCity(loco) {
 navigator.geolocation.getCurrentPosition(cordToCity, cordToCity
   , {enableHighAccuracy:true});
 }
-  
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+  localStorage.setItem('name', nameInput.value)
+  localStorage.setItem('email', emailInput.value)
+  userName.textContent = nameInput.value;
+  userEmail.textContent = emailInput.value;
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+    localStorage.setItem('name', nameInput.value)
+    localStorage.setItem('email', emailInput.value)
+    userName.textContent = nameInput.value;
+    userEmail.textContent = emailInput.value;
+  }
+}

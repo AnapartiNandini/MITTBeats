@@ -91,6 +91,10 @@ main {
   pointer-events: all;
 }
 
+.nav {
+  position: sticky;
+}
+
 .nav li {
   display: inline-block;
   display: flex;
@@ -284,8 +288,8 @@ aside a:hover:not(.active) {
 
 .artists-song img{
   border-radius: 50%;
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
 } 
 
 .artists-song li {
@@ -307,5 +311,96 @@ aside a:hover:not(.active) {
 
 .artists-song .right{
   text-align: right;
-  font-size: 36px;
+  font-size: 26px;
+}
+
+.artists {
+  content: "";
+  display: table;
+  clear: both;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.featured-song {
+  background-color: #383737;
+  margin-top:15px;
+  margin-bottom: 30px;
+  margin-right:40px;
+  padding: 10px;
+  float: left;
+  border-radius: 30px;
+  width:46%;
+  padding: 10px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.featured-song img {
+  width: 200px;
+  margin-left:30px;
+  border-radius: 50%;
+}
+
+.featured-song h3 {
+  display: inline-block;
+  padding: 7px;
+  text-align: right;
+  color:white;
+  font-size: 24px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: block; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  color:black;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%;
+}
+
+.modal-content input {
+  display: block;
+  width: 90%;
+  padding: 10px;
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 15px;
+}
+
+.modal-content label {
+  margin-bottom: 15px;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
