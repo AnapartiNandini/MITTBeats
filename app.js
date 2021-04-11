@@ -65,7 +65,7 @@ function display(data,type){
           </div>
         <div>
         <div class="play-button">
-          <a href="#"><span class="material-icons-outlined">play_arrow</span></a>
+          <a href="song.html"><span class="material-icons-outlined">play_arrow</span></a>
         </div>
         `
     });
