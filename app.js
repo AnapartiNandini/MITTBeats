@@ -12,7 +12,7 @@ const form = document.querySelector('form');
 const songDiv = document.querySelector('.top-songs');
 const searchBar = document.querySelector('#search-bar');
 const button = document.querySelector('button');
-const baseUrl = { geniusArt: "https://genius.p.rapidapi.com/artists/", shaz: "https://shazam.p.rapidapi.com/charts/", genius: "https://genius.p.rapidapi.com/", lyrics: "https://api.lyrics.ovh/v1/", download: "", city: "https://api.bigdatacloud.net/data/reverse-geocode-client?localityLanguage=en" };
+const baseUrl = { geniusArt: "https://genius.p.rapidapi.com/artists/", shaz: "https://shazam.p.rapidapi.com/charts/", genius: "https://genius.p.rapidapi.com/", lyrics: "https://api.lyrics.ovh/v1/", download: "https://www.yt2mp3s.me/@api/button/mp3/", city: "https://api.bigdatacloud.net/data/reverse-geocode-client?localityLanguage=en" };
 const iframe = document.getElementsByTagName("iframe")[0];
 const songs = document.querySelector('.top-songs');
 const artist = document.querySelector('.artist-profile');
@@ -86,6 +86,8 @@ async function display(data, type) {
   </div>
   <div class="song-lyrics">
     <div class="song-info">
+    <iframe class="button-api-frame" src="https://www.yt2mp3s.me/@api/button/mp3/${item.you}" width="100%" height="100%" allowtransparency="true" scrolling="no" style="border:none"></iframe>
+    <iframe class="button-api-frame" src="https://www.yt2mp3s.me/@api/button/videos/${item.you}" width="100%" height="100%" allowtransparency="true" scrolling="no" style="border:none"></iframe>
       <h1>${item.primary.name}</h1>
       <p>${item.fullTitle}</p>
     </div>
@@ -179,6 +181,11 @@ async function getInfo(str) {
   data = data.response.song;
   data = { media: data.media, id: data.id, appleMusic: data.apple_music_player_url, featured: data.featured_artists, primary: data.primary_artist, fullTitle: data.full_title, title: data.title, lyricsByGenius: data.url }
   data.lyrics = await fetch(`${baseUrl.lyrics}${data.primary.name}/${data.title}`);
+  data.you = data.media.find((e) => e.provider === "youtube");
+  console.log(data.you);
+  data.you = data.you.url;
+  data.you = data.you.split("/");
+  data.you = data.you.pop();
   data.lyrics = await data.lyrics.json();
   data.lyrics = data.lyrics.lyrics;
   if (data.lyrics === undefined){
@@ -215,9 +222,11 @@ async function getSongs(str) {
           <li class="song-name">
           ${songName}
           </li>
-          <li class="artist-name">
-            ${artistName}
-          </li>
+          <a href="artists-info.html?id=${song.result.primary_artist.id}">
+            <li class="artist-name">
+              ${artistName}
+            </li>
+          </a>
         <div>
       </ul>
       </a>
