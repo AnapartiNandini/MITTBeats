@@ -86,7 +86,7 @@ async function display(data, type) {
   </div>
   <div class="song-lyrics">
     <div class="song-info">
-    <iframe class="button-api-frame" src="https://www.yt2mp3s.me/@api/button/mp3/${item.you}" width="100%" height="100%" allowtransparency="true" scrolling="no" style="border:none"></iframe>
+    <iframe class="button-api-frame" src="https://www.yt2mp3s.me/@api/button/mp3/${item.you}" width="115px" height="115px" allowtransparency="true" scrolling="no" style="border:none"></iframe>
     <iframe class="button-api-frame" src="https://www.yt2mp3s.me/@api/button/videos/${item.you}" width="100%" height="100%" allowtransparency="true" scrolling="no" style="border:none"></iframe>
       <h1>${item.primary.name}</h1>
       <p>${item.fullTitle}</p>
@@ -184,7 +184,7 @@ async function getInfo(str) {
   data.you = data.media.find((e) => e.provider === "youtube");
   console.log(data.you);
   data.you = data.you.url;
-  data.you = data.you.split("/");
+  data.you = data.you.split("=");
   data.you = data.you.pop();
   data.lyrics = await data.lyrics.json();
   data.lyrics = data.lyrics.lyrics;
@@ -222,7 +222,7 @@ async function getSongs(str) {
           <li class="song-name">
           ${songName}
           </li>
-          <a href="artists-info.html?id=${song.result.primary_artist.id}">
+          <a href="artists-info.html?id=${song.result.primary_artist.id}&artist">
             <li class="artist-name">
               ${artistName}
             </li>
