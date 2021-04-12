@@ -363,12 +363,6 @@ form.onsubmit = (e) => {
   if (searchBar.value.length > 0) {
     getSongs(searchBar.value);
   }
-<<<<<<< HEAD
-}
-||||||| cc792d6
-}
-=======
   e.preventDefault();
 }
 
->>>>>>> 05f9a20581cb19bcf51e90b8bcb4a45c000c94ee
