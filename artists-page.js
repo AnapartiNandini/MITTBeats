@@ -32,7 +32,7 @@ async function getArtistInfo(id) {
 }
 
 async function getArtistTopSongs(id) {
-  let response = await fetch(`https://genius.p.rapidapi.com/artists/${id}/songs`, {
+  let response = await fetch(`https://genius.p.rapidapi.com/artists/${id}/songs?sort=popularity`, {
     "method": "GET",
     "headers": {
       "x-rapidapi-key": "e747355dd1mshe2c4dcb5fe7cad9p12f3d4jsn327270b916ee",

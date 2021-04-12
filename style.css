@@ -38,7 +38,7 @@ main {
 }
 
 .song-name {
-  font-size: 36px;
+  font-size: 27px;
 }
 
 .play-button {
@@ -295,6 +295,7 @@ aside a:hover:not(.active) {
   border-radius: 50%;
   width: 200px;
   height: 200px;
+  margin-left: 30px;
 } 
 
 .artist-name {

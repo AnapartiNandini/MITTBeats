@@ -246,7 +246,11 @@ navigator.geolocation.getCurrentPosition(cordToCity, cordToCity
 span.onclick = function() {
   modal.style.display = "none";
   localStorage.setItem('name', nameInput.value)
+  let myName = localStorage.getItem('name')
+  console.log(myName)
   localStorage.setItem('email', emailInput.value)
+  let myEmail = localStorage.getItem('email');
+  console.log(myEmail)
   userName.textContent = nameInput.value;
   userEmail.textContent = emailInput.value;
 }
