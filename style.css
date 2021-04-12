@@ -54,8 +54,7 @@ main {
 }
 
 .play-button a.active {
-  background-color: #40ffc2;
-  color: white;
+  color: #40ffc2;
 }
 
 .play-button a:hover:not(.active) {
