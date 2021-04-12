@@ -9,6 +9,7 @@ const userEmail = document.querySelector('.sidebar-profile .user-email')
 const arrow = document.querySelector('.back-to-home');
 const divCont = document.querySelector('.body-content');
 const featured = document.querySelector('.artists');
+const options = document.querySelector('.options');
 const form = document.querySelector('form');
 const songDiv = document.querySelector('.top-songs');
 const searchBar = document.querySelector('#search-bar');
@@ -255,3 +256,4 @@ window.onclick = function(event) {
     userEmail.textContent = emailInput.value;
   }
 }
+
