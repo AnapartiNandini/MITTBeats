@@ -58,7 +58,7 @@ main {
 }
 
 .play-button a:hover:not(.active) {
-  color:  #40ffc2;;
+  color: #40ffc2;
 }
 
 .song img {
@@ -223,7 +223,7 @@ aside {
   display: block;
   margin: 0;
   padding: 0;
-  width: 300px; 
+  width: 300px;
   background-color: #2e2d2d;
   position: fixed;
   height: 100%;
@@ -251,11 +251,18 @@ aside li {
   color: white;
   padding: 2px 16px 2px 16px;
   text-decoration: none;
+  position: relative;
+  cursor: pointer;
+  font-size: 2em;
+  padding: 15px 30px;
+  -webkit-transition: all 250ms;
+  transition: all 250ms;
 }
 
 aside a {
   padding-bottom: 20px;
   font-size: 18px;
+  transition: color 0.3s ease;
 }
 
 aside h3,
@@ -284,18 +291,18 @@ aside a:hover:not(.active) {
   background-color: #40ffc2;
   color: black;
   border-radius: 10px 10px 10px 10px;
-} 
+}
 
 .featured-artists {
   margin-left: 30px;
 }
 
-.artists-song img{
+.artists-song img {
   border-radius: 50%;
   width: 200px;
   height: 200px;
   margin-left: 30px;
-} 
+}
 
 .artist-name {
   text-decoration: underline;
@@ -306,12 +313,12 @@ aside a:hover:not(.active) {
   list-style: none;
 }
 
-.artists-song{
+.artists-song {
   display: flex;
   justify-content: space-between;
   width: 97%;
   padding: 5px;
-  border-bottom: 2px solid #8a8a8a ;
+  border-bottom: 2px solid #8a8a8a;
 }
 
 .body-content a {
@@ -319,7 +326,7 @@ aside a:hover:not(.active) {
   color: white;
 }
 
-.artists-song .right{
+.artists-song .right {
   text-align: right;
   font-size: 26px;
 }
@@ -335,13 +342,13 @@ aside a:hover:not(.active) {
 
 .featured-song {
   background-color: #383737;
-  margin-top:15px;
+  margin-top: 15px;
   margin-bottom: 30px;
-  margin-right:40px;
+  margin-right: 40px;
   padding: 10px;
   float: left;
   border-radius: 30px;
-  width:46%;
+  width: 46%;
   padding: 10px;
   height: 300px;
   display: flex;
@@ -351,7 +358,7 @@ aside a:hover:not(.active) {
 
 .featured-song img {
   width: 200px;
-  margin-left:30px;
+  margin-left: 30px;
   border-radius: 50%;
 }
 
@@ -359,7 +366,7 @@ aside a:hover:not(.active) {
   display: inline-block;
   padding: 7px;
   text-align: right;
-  color:white;
+  color: white;
   font-size: 24px;
 }
 
@@ -374,13 +381,13 @@ aside a:hover:not(.active) {
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 /* Modal Content */
 .modal-content {
-  color:black;
+  color: black;
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
@@ -420,7 +427,7 @@ aside a:hover:not(.active) {
   align-items: center;
 }
 
-.artist-profile img{
+.artist-profile img {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.15);
   width: 300px;
   margin: 30px;
