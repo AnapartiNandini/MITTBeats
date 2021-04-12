@@ -242,25 +242,15 @@ navigator.geolocation.getCurrentPosition(cordToCity, cordToCity
   , {enableHighAccuracy:true});
 }
 
-// When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
-  localStorage.setItem('name', nameInput.value)
-  let myName = localStorage.getItem('name')
-  console.log(myName)
-  localStorage.setItem('email', emailInput.value)
-  let myEmail = localStorage.getItem('email');
-  console.log(myEmail)
   userName.textContent = nameInput.value;
   userEmail.textContent = emailInput.value;
 }
 
-// When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
-    localStorage.setItem('name', nameInput.value)
-    localStorage.setItem('email', emailInput.value)
     userName.textContent = nameInput.value;
     userEmail.textContent = emailInput.value;
   }
