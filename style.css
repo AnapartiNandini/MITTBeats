@@ -443,6 +443,48 @@ aside a:hover:not(.active) {
   display: none;
 }
 
+.song-audio {
+  display: flex;
+  justify-content: center;
+}
+
+.song-audio iframe {
+  background-color: white;
+  border: 2px solid white;
+}
+
+.container .song-audio{
+  margin: 50px;
+}
+
+.lyrics {
+  height: 500px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  font-size: 15px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #000; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #40ffc2; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ff40b6; 
+}
 @media only screen and (max-width: 1330px) {
   .featured-song {
     width: 100%;

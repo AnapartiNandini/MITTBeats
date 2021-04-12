@@ -51,7 +51,7 @@ const urlHeaders = {
   shazam2: {
     "method": "GET",
     "headers": {
-      "x-rapidapi-key": "e747355dd1mshe2c4dcb5fe7cad9p12f3d4jsn327270b916ee",
+      "x-rapidapi-key": "8eb2b2d59dmsh29a8df3428b500fp16d509jsnfb6b13258dbe",
       "x-rapidapi-host": "shazam.p.rapidapi.com"
     }
   }
@@ -84,20 +84,23 @@ async function display(data, type) {
     <div class="backImage">
     <img
       src="${item.primary.image_url}" />
+      <div class="song-audio">
+      <iframe height="50" width="500" src="${item.appleMusic}"></iframe>
+    </div>
+    <div class="downloads">
+    <iframe class="button-api-frame" src="https://www.yt2mp3s.me/@api/button/mp3/${item.you}" width="115px" height="115px" allowtransparency="true" scrolling="no" style="border:none"></iframe>
+    <iframe class="button-api-frame" src="https://www.yt2mp3s.me/@api/button/videos/${item.you}" width="100%" height="100%" allowtransparency="true" scrolling="no" style="border:none"></iframe>
+</div>
   </div>
   <div class="song-lyrics">
     <div class="song-info">
-    <iframe class="button-api-frame" src="https://www.yt2mp3s.me/@api/button/mp3/${item.you}" width="115px" height="115px" allowtransparency="true" scrolling="no" style="border:none"></iframe>
-    <iframe class="button-api-frame" src="https://www.yt2mp3s.me/@api/button/videos/${item.you}" width="100%" height="100%" allowtransparency="true" scrolling="no" style="border:none"></iframe>
       <h1>${item.primary.name}</h1>
       <p>${item.fullTitle}</p>
     </div>
     <div class="lyrics">
     ${item.lyrics}
     </div>
-    <div class="song-audio">
-      <iframe height="50" width="500" src="${item.appleMusic}"></iframe>
-    </div>
+    <buuton>Download here</button>
   </div>
   `
   } else if (type === 3) {
@@ -170,7 +173,7 @@ async function getArtistInfo(id) {
   let data = await fetch(`${baseUrl.geniusArt}${id}`, urlHeaders.genius2);
   data = await data.json();
 
-  let music = await fetch(`${baseUrl.geniusArt}${id}/songs`, urlHeaders.genius2);
+  let music = await fetch(`${baseUrl.geniusArt}${id}/songs?sort=popularity`, urlHeaders.genius2);
   music = await music.json();
   data.songs = music.response.songs;
   return data;
