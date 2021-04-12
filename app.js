@@ -8,6 +8,7 @@ const userName = document.querySelector('.sidebar-profile .user-name')
 const userEmail = document.querySelector('.sidebar-profile .user-email')
 const arrow = document.querySelector('.back-to-home');
 const featured = document.querySelector('.artists');
+const options = document.querySelector('.options');
 const form = document.querySelector('form');
 const songDiv = document.querySelector('.top-songs');
 const searchBar = document.querySelector('#search-bar');
@@ -364,3 +365,4 @@ form.onsubmit = (e) => {
   }
   e.preventDefault();
 }
+
