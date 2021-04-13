@@ -2,6 +2,11 @@
 * {
   box-sizing: border-box;
 }
+
+body {
+  width: 100%;
+}
+
 .material-icons-outlined {
   font-family: "Material Icons";
   font-weight: normal;
@@ -26,6 +31,11 @@
   height: 200px;
   margin-left: 30px;
 } 
+
+.song-info a {
+  color: #40ffc2;
+  text-decoration: underline;
+}
 
 .artist-name {
   text-decoration: underline;
@@ -233,6 +243,7 @@
   width: 100%;
   background-color: #383737;
   border-radius: 20px;
+<<<<<<< HEAD
 }
 
 .hamburger {
@@ -247,4 +258,42 @@
   .hamburger {
     display: block;
   }
+||||||| c62e512
+=======
+}
+
+@media only screen and (max-width: 1330px) {
+  .featured-song {
+    width: 100%;
+  }
+
+  .featured-artists {
+    margin-right: 30px;
+  }
+}
+
+@media only screen and (max-width: 1030px) {
+  aside {
+    display: none;
+  }
+
+  .body-content {
+    margin: 0;
+  }
+
+  .featured-artists {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+}
+
+@media only screen and (max-width: 870px) {
+  .options {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+>>>>>>> acee426cc91f46403b47960d622c212a7e372024
 }
