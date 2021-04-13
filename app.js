@@ -76,32 +76,38 @@ async function display(data, type) {
         <div class="play-button">
           <a href="#"><span class="material-icons-outlined">play_arrow</span></a>
         </div>
+        <div>
+        </div>
         `
     });
   } else if (type === 2) {
     let item = await getInfo(data);
     divCont.innerHTML = `
     <div class="backImage">
-    <img
-      src="${item.primary.image_url}" />
+      <img src="${item.primary.image_url}" />
       <div class="song-audio">
-      <iframe height="50" width="500" src="${item.appleMusic}"></iframe>
+        <iframe height="50" width="500" src="${item.appleMusic}"></iframe>
+      </div>
     </div>
-    <div class="downloads">
-    <iframe class="button-api-frame" src="https://www.yt2mp3s.me/@api/button/mp3/${item.you}" width="115px" height="115px" allowtransparency="true" scrolling="no" style="border:none"></iframe>
-    <iframe class="button-api-frame" src="https://www.yt2mp3s.me/@api/button/videos/${item.you}" width="100%" height="100%" allowtransparency="true" scrolling="no" style="border:none"></iframe>
-</div>
-  </div>
-  <div class="song-lyrics">
-    <div class="song-info">
-      <h1>${item.primary.name}</h1>
-      <p>${item.fullTitle}</p>
+    <div class="song-lyrics">
+      <div class="song-info">
+        <h1>${item.primary.name}</h1>
+        <p>${item.fullTitle}</p>
+      </div>
+      <div class="lyrics">
+        ${item.lyrics}
+      </div>    
+      <a class="button" href="#popup1">Download here</a>
+      <div id="popup1" class="overlay">
+        <div class="popup">
+          <a class="close" href="#">&times;</a>
+          <div class="content">
+            <iframe class="button-api-frame" src="https://www.yt2mp3s.me/@api/button/mp3/${item.you}" width="115px" height="115px" allowtransparency="true" scrolling="no" style="border:none"></iframe>
+            <iframe class="button-api-frame" src="https://www.yt2mp3s.me/@api/button/videos/${item.you}" width="100%" height="100%" allowtransparency="true" scrolling="no" style="border:none"></iframe>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="lyrics">
-    ${item.lyrics}
-    </div>
-    <buuton>Download here</button>
-  </div>
   `
   } else if (type === 3) {
     console.log(data);

@@ -492,6 +492,74 @@ aside a:hover:not(.active) {
 ::-webkit-scrollbar-thumb:hover {
   background: #ff40b6; 
 }
+
+.button {
+  font-size: 1em;
+  padding: 10px;
+  color: #fff;
+  margin-top: 50px;
+  margin-right: 55px;
+  border: 2px solid #40ffc2;
+  border-radius: 30px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+
+.button:hover {
+  background: #40ffc2;
+  color: #000;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 14%;
+  position: relative;
+  transition: all 5s ease-in-out;
+  height: 500px;
+}
+
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+
+.popup .close:hover {
+  color: #40ffc2;
+}
+
+.popup .content {
+  width: 150px;
+  text-align: center;
+}
+
+
 @media only screen and (max-width: 1330px) {
   .featured-song {
     width: 100%;
