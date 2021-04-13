@@ -44,7 +44,7 @@ const urlHeaders = {
   shazam1: {
     "method": "GET",
     "headers": {
-      "x-rapidapi-key": "610ad29b0bmshfd6c939c7547495p1c3f93jsn2ca0556b4d1d",
+      "x-rapidapi-key":  "7392255746msh57a53e0966959e4p1efa96jsncf706ab578df",
       "x-rapidapi-host": "shazam.p.rapidapi.com"
     }
   },
@@ -91,8 +91,8 @@ async function display(data, type) {
     </div>
     <div class="song-lyrics">
       <div class="song-info">
-        <h1>${item.primary.name}</h1>
-        <p>${item.fullTitle}</p>
+        <h1>${item.title}</h1>
+        <a href="artists-info.html?id=${item.primary.id}&artist"><p>${item.primary.name}</p></a>
       </div>
       <div class="lyrics">
         ${item.lyrics}
