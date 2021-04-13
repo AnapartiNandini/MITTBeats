@@ -1,4 +1,3 @@
-//TEMPORARY 
 const modal = document.getElementById("myModal");
 const span = document.getElementsByClassName("close")[0];
 const modalForm = document.querySelector('.modal-content form');
@@ -368,4 +367,3 @@ form.onsubmit = (e) => {
   }
   e.preventDefault();
 }
-
