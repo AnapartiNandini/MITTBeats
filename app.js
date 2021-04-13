@@ -30,28 +30,28 @@ const urlHeaders = {
   genius1: {
     "method": "GET",
     "headers": {
-      "x-rapidapi-key": "f6457cf287mshafd432fc3e3cbc3p1213fcjsn136b57a88aa9",
+      "x-rapidapi-key": "2247980046msh68a22faa7c63535p109a44jsn81484c7d80bf",
       "x-rapidapi-host": "genius.p.rapidapi.com"
     }
   },
   genius2: {
     "method": "GET",
     "headers": {
-      "x-rapidapi-key": "e4da8a66ccmsh666fb8703ab5980p1ad5fdjsn66c686962b19",
+      "x-rapidapi-key": "4616b7ae9cmshb6e506f5ffff27ep1fe324jsn702dc6119fbe",
       "x-rapidapi-host": "genius.p.rapidapi.com"
     }
   },
   shazam1: {
     "method": "GET",
     "headers": {
-      "x-rapidapi-key": "3391926076msh77266856b95b8a4p1f8d38jsnfa2f0b18d7e0",
+      "x-rapidapi-key": "7392255746msh57a53e0966959e4p1efa96jsncf706ab578df",
       "x-rapidapi-host": "shazam.p.rapidapi.com"
     }
   },
   shazam2: {
     "method": "GET",
     "headers": {
-      "x-rapidapi-key": "b8f474c389msh9c4def707d9ba09p113507jsn42784eac4bd4",
+      "x-rapidapi-key": "8eb2b2d59dmsh29a8df3428b500fp16d509jsnfb6b13258dbe",
       "x-rapidapi-host": "shazam.p.rapidapi.com"
     }
   }
