@@ -20,6 +20,7 @@ const artist = document.querySelector('.artist-profile');
 const artistText = document.querySelector('.artist-text')
 const artistSongs = document.querySelector('.artist-top-songs')
 const params = new URLSearchParams(window.location.search);
+let youtube;
 
 let divCont = document.querySelector('.body-content');
 if (divCont === null){
@@ -123,6 +124,7 @@ async function display(data, type) {
     });
   } else if (type === 4) {
     let artistData = await getArtistInfo(data);
+  
     artist.innerHTML = `
      <img src="${artistData.response.artist.image_url}">
      <div class="artist-text">
@@ -154,7 +156,7 @@ async function display(data, type) {
       });
     } else if (output.length < 5) {
       artistData.songs.forEach(song => {
-        artistSongs.innerHTML += `
+      artistSongs.innerHTML += `
       <a href="song.html?id=${song.id}">
         <ul class="artists-song" data-id="${song.id}">
             <div class="left">
@@ -192,7 +194,7 @@ async function getInfo(str) {
   data = { media: data.media, id: data.id, appleMusic: data.apple_music_player_url, featured: data.featured_artists, primary: data.primary_artist, fullTitle: data.full_title, title: data.title, lyricsByGenius: data.url }
   data.lyrics = await fetch(`${baseUrl.lyrics}${data.primary.name}/${data.title}`);
   data.you = data.media.find((e) => e.provider === "youtube");
-  console.log(data.you);
+  youtube = data.you;
   data.you = data.you.url;
   data.you = data.you.split("=");
   data.you = data.you.pop();
@@ -203,7 +205,6 @@ async function getInfo(str) {
   } 
   return data;
 }
-
 
 async function getSongsGenius(str) {
   str = str.split(" ").join("%20");
@@ -340,9 +341,8 @@ if (params.has("id")) {
   }
 } else {
   modal.style.display = "none";
-  userName.textContent = localStorage.getItem("name");
-  userEmail.textContent = localStorage.getItem("email");
-  
+  userName.textContent = "Jane Doe";
+  userEmail.textContent = "janedoe@gmail.com";
 }
 if (sessionStorage.getItem('loco') === null){
   navigator.geolocation.getCurrentPosition(cordToCity, cordToCity
