@@ -22,7 +22,7 @@ const params = new URLSearchParams(window.location.search);
 let youtube;
 
 let divCont = document.querySelector('.body-content');
-if (divCont === null){
+if (divCont === null) {
   divCont = document.querySelector(".container");
   console.log(divCont);
 }
@@ -44,7 +44,7 @@ const urlHeaders = {
   shazam1: {
     "method": "GET",
     "headers": {
-      "x-rapidapi-key":  "7392255746msh57a53e0966959e4p1efa96jsncf706ab578df",
+      "x-rapidapi-key": "7392255746msh57a53e0966959e4p1efa96jsncf706ab578df",
       "x-rapidapi-host": "shazam.p.rapidapi.com"
     }
   },
@@ -199,9 +199,9 @@ async function getInfo(str) {
   data.you = data.you.pop();
   data.lyrics = await data.lyrics.json();
   data.lyrics = data.lyrics.lyrics;
-  if (data.lyrics === undefined){
+  if (data.lyrics === undefined) {
     data.lyrics = `<a href="${data.lyricsByGenius}">Lyrics</a>`;
-  } 
+  }
   return data;
 }
 
@@ -302,7 +302,7 @@ async function cordToCity(loco) {
   if ("code" in loco) {
     loco.latitude = 43.6529;
     loco.longitude = -79.3849;
-  } else{
+  } else {
     sessionStorage.setItem("loco", JSON.stringify(loco));
   }
   let data = await fetch(`${baseUrl.city}&latitude=${loco.latitude}&longitude=${loco.longitude}`)
@@ -319,38 +319,38 @@ if (params.has("id")) {
 
 } else {
   // When the user clicks on <span> (x), close the modal
-  if(localStorage.getItem('name') === null) {
-  span.onclick = function () {
-    modal.style.display = "none";
-    localStorage.setItem('name', nameInput.value)
-    localStorage.setItem('email', emailInput.value)
-    userName.textContent = nameInput.value;
-    userEmail.textContent = emailInput.value;
-  }
-
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function (event) {
-
-    if (event.target == modal) {
+  if (localStorage.getItem('name') === null) {
+    span.onclick = function () {
       modal.style.display = "none";
       localStorage.setItem('name', nameInput.value)
       localStorage.setItem('email', emailInput.value)
       userName.textContent = nameInput.value;
       userEmail.textContent = emailInput.value;
     }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+
+      if (event.target == modal) {
+        modal.style.display = "none";
+        localStorage.setItem('name', nameInput.value)
+        localStorage.setItem('email', emailInput.value)
+        userName.textContent = nameInput.value;
+        userEmail.textContent = emailInput.value;
+      }
+    }
+  } else {
+    modal.style.display = "none";
+    userName.textContent = "Jane Doe";
+    userEmail.textContent = "janedoe@gmail.com";
+
   }
-} else {
-  modal.style.display = "none";
-  userName.textContent = "Jane Doe";
-  userEmail.textContent = "janedoe@gmail.com";
-  
-}
-if (sessionStorage.getItem('loco') === null){
-  navigator.geolocation.getCurrentPosition(cordToCity, cordToCity
-    , { enableHighAccuracy: true });
-} else {
-  cordToCity(JSON.parse(sessionStorage.getItem("loco")));
-}
+  if (sessionStorage.getItem('loco') === null) {
+    navigator.geolocation.getCurrentPosition(cordToCity, cordToCity
+      , { enableHighAccuracy: true });
+  } else {
+    cordToCity(JSON.parse(sessionStorage.getItem("loco")));
+  }
   //change divCont const on top to the element that will hold all the songs searched DO NOT DELETE
   divCont.onclick = (e) => {
     const close = e.target.closest(".play-button");

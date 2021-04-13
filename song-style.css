@@ -363,7 +363,7 @@ body {
  * animation tracking-in-contract
  * ----------------------------------------
  */
- @-webkit-keyframes tracking-in-contract {
+@-webkit-keyframes tracking-in-contract {
   0% {
     letter-spacing: 1em;
     opacity: 0;
