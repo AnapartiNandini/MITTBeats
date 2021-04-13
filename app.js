@@ -123,7 +123,7 @@ async function display(data, type) {
     });
   } else if (type === 4) {
     let artistData = await getArtistInfo(data);
-  
+
     artist.innerHTML = `
      <img src="${artistData.response.artist.image_url}">
      <div class="artist-text">
@@ -155,7 +155,7 @@ async function display(data, type) {
       });
     } else if (output.length < 5) {
       artistData.songs.forEach(song => {
-      artistSongs.innerHTML += `
+        artistSongs.innerHTML += `
       <a href="song.html?id=${song.id}">
         <ul class="artists-song" data-id="${song.id}">
             <div class="left">
@@ -204,6 +204,7 @@ async function getInfo(str) {
   } 
   return data;
 }
+
 
 async function getSongsGenius(str) {
   str = str.split(" ").join("%20");
@@ -342,6 +343,7 @@ if (params.has("id")) {
   modal.style.display = "none";
   userName.textContent = "Jane Doe";
   userEmail.textContent = "janedoe@gmail.com";
+  
 }
 if (sessionStorage.getItem('loco') === null){
   navigator.geolocation.getCurrentPosition(cordToCity, cordToCity
@@ -364,6 +366,7 @@ if (sessionStorage.getItem('loco') === null){
 searchBar.onkeyup = (e) => {
   if (searchBar.value.length >= 3) {
     document.querySelector(".container").style.gridTemplateColumns = "1fr";
+    document.querySelector(".container").style.gridTemplateAreas = "none";
     getSongs(searchBar.value);
   }
 }
