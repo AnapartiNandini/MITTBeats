@@ -58,7 +58,7 @@ main {
 }
 
 .play-button a:hover:not(.active) {
-  color:  #40ffc2;;
+  color: #40ffc2;
 }
 
 .song img {
@@ -178,8 +178,10 @@ main {
 }
 
 .tracking-in-expand-fwd {
-	-webkit-animation: tracking-in-expand-fwd 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
-	        animation: tracking-in-expand-fwd 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  -webkit-animation: tracking-in-expand-fwd 0.8s
+    cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  animation: tracking-in-expand-fwd 0.8s cubic-bezier(0.215, 0.61, 0.355, 1)
+    both;
 }
 
 .top-ten {
@@ -214,6 +216,12 @@ main {
   -webkit-overflow-scrolling: touch;
 }
 
+.tracking-in-contract {
+  -webkit-animation: tracking-in-contract 0.8s
+    cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  animation: tracking-in-contract 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+}
+
 header {
   padding: 0;
 }
@@ -228,7 +236,7 @@ aside {
   display: block;
   margin: 0;
   padding: 0;
-  width: 300px; 
+  width: 300px;
   background-color: #2e2d2d;
   position: fixed;
   height: 100%;
@@ -289,18 +297,18 @@ aside a:hover:not(.active) {
   background-color: #40ffc2;
   color: black;
   border-radius: 10px 10px 10px 10px;
-} 
+}
 
 .featured-artists {
   margin-left: 30px;
 }
 
-.artists-song img{
+.artists-song img {
   border-radius: 50%;
   width: 200px;
   height: 200px;
   margin-left: 30px;
-} 
+}
 
 .artist-name {
   text-decoration: underline;
@@ -311,12 +319,12 @@ aside a:hover:not(.active) {
   list-style: none;
 }
 
-.artists-song{
+.artists-song {
   display: flex;
   justify-content: space-between;
   width: 97%;
   padding: 5px;
-  border-bottom: 2px solid #8a8a8a ;
+  border-bottom: 2px solid #8a8a8a;
 }
 
 .body-content a {
@@ -324,7 +332,7 @@ aside a:hover:not(.active) {
   color: white;
 }
 
-.artists-song .right{
+.artists-song .right {
   text-align: right;
   font-size: 26px;
 }
@@ -340,13 +348,13 @@ aside a:hover:not(.active) {
 
 .featured-song {
   background-color: #383737;
-  margin-top:15px;
+  margin-top: 15px;
   margin-bottom: 30px;
-  margin-right:40px;
+  margin-right: 40px;
   padding: 10px;
   float: left;
   border-radius: 30px;
-  width:46%;
+  width: 46%;
   padding: 10px;
   height: 300px;
   display: flex;
@@ -356,7 +364,7 @@ aside a:hover:not(.active) {
 
 .featured-song img {
   width: 200px;
-  margin-left:30px;
+  margin-left: 30px;
   border-radius: 50%;
 }
 
@@ -364,7 +372,7 @@ aside a:hover:not(.active) {
   display: inline-block;
   padding: 7px;
   text-align: right;
-  color:white;
+  color: white;
   font-size: 24px;
 }
 
@@ -379,13 +387,13 @@ aside a:hover:not(.active) {
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 /* Modal Content */
 .modal-content {
-  color:black;
+  color: black;
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
@@ -425,7 +433,7 @@ aside a:hover:not(.active) {
   align-items: center;
 }
 
-.artist-profile img{
+.artist-profile img {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.15);
   width: 300px;
   margin: 30px;
@@ -458,7 +466,7 @@ aside a:hover:not(.active) {
   border: 2px solid white;
 }
 
-.container .song-audio{
+.container .song-audio {
   margin: 50px;
 }
 
@@ -476,19 +484,19 @@ aside a:hover:not(.active) {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #000; 
+  background: #000;
   border-radius: 10px;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #40ffc2; 
+  background: #40ffc2;
   border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #ff40b6; 
+  background: #ff40b6;
 }
 
 .button {
@@ -608,11 +616,11 @@ aside a:hover:not(.active) {
  * animation tracking-in-expand-fwd
  * ----------------------------------------
  */
- @-webkit-keyframes tracking-in-expand-fwd {
+@-webkit-keyframes tracking-in-expand-fwd {
   0% {
     letter-spacing: -0.5em;
     -webkit-transform: translateZ(-700px);
-            transform: translateZ(-700px);
+    transform: translateZ(-700px);
     opacity: 0;
   }
   40% {
@@ -620,7 +628,7 @@ aside a:hover:not(.active) {
   }
   100% {
     -webkit-transform: translateZ(0);
-            transform: translateZ(0);
+    transform: translateZ(0);
     opacity: 1;
   }
 }
@@ -628,7 +636,7 @@ aside a:hover:not(.active) {
   0% {
     letter-spacing: -0.5em;
     -webkit-transform: translateZ(-700px);
-            transform: translateZ(-700px);
+    transform: translateZ(-700px);
     opacity: 0;
   }
   40% {
@@ -636,7 +644,46 @@ aside a:hover:not(.active) {
   }
   100% {
     -webkit-transform: translateZ(0);
-            transform: translateZ(0);
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
+/* ----------------------------------------------
+ * Generated by Animista on 2021-4-13 9:59:22
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+/**
+ * ----------------------------------------
+ * animation tracking-in-contract
+ * ----------------------------------------
+ */
+ @-webkit-keyframes tracking-in-contract {
+  0% {
+    letter-spacing: 1em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    letter-spacing: normal;
+    opacity: 1;
+  }
+}
+@keyframes tracking-in-contract {
+  0% {
+    letter-spacing: 1em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    letter-spacing: normal;
     opacity: 1;
   }
 }
