@@ -229,7 +229,7 @@ async function getSongs(str) {
           </div>
           <div class="right">
           <li class="song-name">
-          ${songName}
+            ${songName}
           </li>
           <a href="artists-info.html?id=${song.result.primary_artist.id}&artist">
             <li class="artist-name">
@@ -363,6 +363,7 @@ if (sessionStorage.getItem('loco') === null){
 
 searchBar.onkeyup = (e) => {
   if (searchBar.value.length >= 3) {
+    document.querySelector(".container").style.gridTemplateColumns = "1fr";
     getSongs(searchBar.value);
   }
 }

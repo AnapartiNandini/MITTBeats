@@ -80,8 +80,8 @@
 .container .song-lyrics {
   grid-area: songlyrics;
   text-align: center;
-  white-space: pre-line;
   padding-bottom: 150px;
+  white-space: pre-line;
 }
 
 .container .song-lyrics .song-info {
@@ -107,6 +107,53 @@
   grid-template-rows: auto;
   grid-template-areas: 
   "coverimg songlyrics";
+}
+
+.artists-song img{
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  margin-left: 30px;
+} 
+
+.artist-name {
+  text-decoration: underline;
+  color: #40ffc2;
+}
+
+.artists-song li {
+  list-style: none;
+}
+
+.artists-song{
+  display: flex;
+  justify-content: space-between;
+  width: 97%;
+  padding: 5px;
+  border-bottom: 2px solid #8a8a8a ;
+}
+
+.body-content a {
+  text-decoration: none;
+  color: white;
+}
+
+.artists-song .right{
+  text-align: right;
+  font-size: 26px;
+}
+
+.artists {
+  content: "";
+  display: table;
+  clear: both;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.nav {
+  position: sticky;
 }
 
 .nav li {
@@ -186,4 +233,18 @@
   width: 100%;
   background-color: #383737;
   border-radius: 20px;
+}
+
+.hamburger {
+  display: none;
+}
+
+@media only screen and (max-width: 870px) {
+  .options {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
 }
