@@ -19,7 +19,6 @@ const artist = document.querySelector('.artist-profile');
 const artistText = document.querySelector('.artist-text')
 const artistSongs = document.querySelector('.artist-top-songs')
 const params = new URLSearchParams(window.location.search);
-let youtube;
 
 let divCont = document.querySelector('.body-content');
 if (divCont === null) {
