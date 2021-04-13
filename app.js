@@ -24,34 +24,33 @@ let youtube;
 let divCont = document.querySelector('.body-content');
 if (divCont === null) {
   divCont = document.querySelector(".container");
-  console.log(divCont);
 }
 const urlHeaders = {
   genius1: {
     "method": "GET",
     "headers": {
-      "x-rapidapi-key": "f6457cf287mshafd432fc3e3cbc3p1213fcjsn136b57a88aa9",
+      "x-rapidapi-key": "58e8c41e3amsh2dbf996ffe5abbcp1ace3cjsn10c63b2e07f2",
       "x-rapidapi-host": "genius.p.rapidapi.com"
     }
   },
   genius2: {
     "method": "GET",
     "headers": {
-      "x-rapidapi-key": "e4da8a66ccmsh666fb8703ab5980p1ad5fdjsn66c686962b19",
+      "x-rapidapi-key": "610ad29b0bmshfd6c939c7547495p1c3f93jsn2ca0556b4d1d",
       "x-rapidapi-host": "genius.p.rapidapi.com"
     }
   },
   shazam1: {
     "method": "GET",
     "headers": {
-      "x-rapidapi-key": "3391926076msh77266856b95b8a4p1f8d38jsnfa2f0b18d7e0",
+      "x-rapidapi-key": "3ba54e1dabmshd744e5b9a9d0cb8p1a2e9djsnafd1c86cade7",
       "x-rapidapi-host": "shazam.p.rapidapi.com"
     }
   },
   shazam2: {
     "method": "GET",
     "headers": {
-      "x-rapidapi-key": "b8f474c389msh9c4def707d9ba09p113507jsn42784eac4bd4",
+      "x-rapidapi-key": "5d5fe088ddmsha67adcd4aea1412p1b9fbbjsnf1a3a5b61862",
       "x-rapidapi-host": "shazam.p.rapidapi.com"
     }
   }
@@ -110,7 +109,6 @@ async function display(data, type) {
     </div>
   `
   } else if (type === 3) {
-    console.log(data);
     data.forEach(element => {
       featured.innerHTML += `
       <a href="artists-info.html?id=${element.id}&artist">
@@ -131,7 +129,6 @@ async function display(data, type) {
      <h3>${artistData.response.artist.name}</h3>
      </div>
      `
-    console.log(artistData);
     let output = artistData.songs.filter(song => song.primary_artist.name == artistData.response.artist.name);
     if (output.length > 5) {
       output.forEach(song => {
@@ -177,7 +174,7 @@ async function display(data, type) {
   }
 }
 async function getArtistInfo(id) {
-  let data = await fetch(`${baseUrl.geniusArt}${id}`, urlHeaders.genius2);
+  let data = await fetch(`${baseUrl.geniusArt}${id}`, urlHeaders.genius1);
   data = await data.json();
 
   let music = await fetch(`${baseUrl.geniusArt}${id}/songs?sort=popularity`, urlHeaders.genius2);
@@ -187,7 +184,7 @@ async function getArtistInfo(id) {
 }
 
 async function getInfo(str) {
-  let data = await fetch(`${baseUrl.genius}songs/${str}`, urlHeaders.genius2);
+  let data = await fetch(`${baseUrl.genius}songs/${str}`, urlHeaders.genius1);
   data = await data.json();
   data = data.response.song;
   data = { media: data.media, id: data.id, appleMusic: data.apple_music_player_url, featured: data.featured_artists, primary: data.primary_artist, fullTitle: data.full_title, title: data.title, lyricsByGenius: data.url }
@@ -280,7 +277,6 @@ async function getArtists(data) {
 }
 
 async function getTopSongs(id) {
-  console.log(id);
   let data;
   if (id === undefined) {
     data = await fetch(`${baseUrl.shaz}track?locale=en-US&pageSize=10&startFrom=1`, urlHeaders.shazam2);
@@ -341,8 +337,8 @@ if (params.has("id")) {
     }
   } else {
     modal.style.display = "none";
-    userName.textContent = "Jane Doe";
-    userEmail.textContent = "janedoe@gmail.com";
+    userName.textContent = localStorage.getItem("name");
+    userEmail.textContent = localStorage.getItem("email");
 
   }
   if (sessionStorage.getItem('loco') === null) {
@@ -354,13 +350,15 @@ if (params.has("id")) {
   //change divCont const on top to the element that will hold all the songs searched DO NOT DELETE
   divCont.onclick = (e) => {
     const close = e.target.closest(".play-button");
-    const ite = e.target.closest(".song").dataset.id;
+    const ite = e.target.closest(".song");
+    if(ite != undefined){ 
     if (close != undefined) {
-      playMusicSample(ite);
+      playMusicSample(ite.dataset.id);
     } else {
-      window.location.replace(`song.html?id=${ite}`);
+      window.location.replace(`song.html?id=${ite.dataset.id}`);
     }
   }
+}
 }
 
 searchBar.onkeyup = (e) => {
