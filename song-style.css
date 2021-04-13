@@ -36,11 +36,21 @@
   list-style: none;
 }
 
+.song-name {
+  color: white;
+  text-decoration: none;
+}
+
+.right a {
+  text-decoration: none;
+}
 .artists-song{
   display: flex;
   justify-content: space-between;
-  width: 97%;
+  width: 100%;
   padding: 5px;
+  display: grid;
+  grid-template-rows: auto;
   border-bottom: 2px solid #8a8a8a ;
 }
 
